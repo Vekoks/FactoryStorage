@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\FactoryStorage\\FactoryStorage\\FactoryStorage.csproj",
+      "projectUniqueName": "D:\\GitHub\\FactoryStorageProject\\FactoryStorage\\FactoryStorage\\FactoryStorage.csproj",
       "projectName": "FactoryStorage",
-      "projectPath": "D:\\GitHub\\FactoryStorage\\FactoryStorage\\FactoryStorage.csproj",
+      "projectPath": "D:\\GitHub\\FactoryStorageProject\\FactoryStorage\\FactoryStorage\\FactoryStorage.csproj",
       "packagesPath": "C:\\Users\\Vesko\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\FactoryStorage\\FactoryStorage\\obj\\",
+      "outputPath": "D:\\GitHub\\FactoryStorageProject\\FactoryStorage\\FactoryStorage\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
