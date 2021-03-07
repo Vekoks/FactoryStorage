@@ -1,0 +1,17 @@
+﻿<Window x:Class="FactoryStorage.View.Storage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FactoryStorage.View"
+        mc:Ignorable="d"
+        Title="Storage" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListBox x:Name="listBox" Margin="42,88,266,66"/>
+        <Label x:Name="labelHeading" Content="Наличност" HorizontalAlignment="Center" Margin="0,27,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <Button x:Name="buttonGather" Content="Добави" HorizontalAlignment="Left" Margin="612,188,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="buttonGather_Click"/>
+        <Label x:Name="labelGather" Content="Добави нови материали" HorizontalAlignment="Left" Margin="567,136,0,0" VerticalAlignment="Top" FontSize="16"/>
+
+    </Grid>
+</Window>
