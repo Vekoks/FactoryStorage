@@ -12,10 +12,11 @@
         <Label x:Name="labelHeading" Content="Добавяне" HorizontalAlignment="Center" Margin="0,28,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="buttonGather" Content="Добави" HorizontalAlignment="Center" Margin="0,164,0,0" VerticalAlignment="Top" Height="30" Width="80" Click="buttonGather_Click"/>
 
-        <TextBox x:Name="textBoxNumber" HorizontalAlignment="Left" Margin="234,93,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Height="25" TextAlignment="Center"/>
-        <Button x:Name="buttonDown" Content="˅" HorizontalAlignment="Left" Margin="239,123,0,0" VerticalAlignment="Top" Width="25" Click="buttonDown_Click"/>
-        <Button x:Name="buttonUp" Content="^" HorizontalAlignment="Left" Margin="239,68,0,0" VerticalAlignment="Top" Width="25" Click="buttonUp_Click"/>
+        <TextBox x:Name="textBoxNumber" Text="0" HorizontalAlignment="Left" Margin="234,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Height="25" TextAlignment="Center"/>
+        <Button x:Name="buttonDown" Content="˅" HorizontalAlignment="Left" Margin="239,123,0,0" VerticalAlignment="Top" Width="25" Click="buttonDown_Click" FontSize="14" Height="20"/>
+        <Button x:Name="buttonUp" Content="^" HorizontalAlignment="Left" Margin="239,68,0,0" VerticalAlignment="Top" Width="25" Click="buttonUp_Click" FontSize="14" Height="20"/>
         <Label x:Name="labelChoice" Content="Избери" HorizontalAlignment="Left" Margin="114,62,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelNumberStorage" Content="Label" HorizontalAlignment="Left" Margin="274,92,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

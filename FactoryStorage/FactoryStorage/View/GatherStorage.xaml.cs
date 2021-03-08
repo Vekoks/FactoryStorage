@@ -46,9 +46,13 @@ namespace FactoryStorage.View
             {
                 if (string.Equals(item.Name, name))
                 {
-                    item.Number = number;
+                    item.Number += number;
+
+                    labelNumberStorage.Content = item.Number.ToString() + " налични";
                 }
             }
+
+
 
             FileProcessing.SaveInfomation(listOrderFromFile);
         }
@@ -61,7 +65,9 @@ namespace FactoryStorage.View
             {
                 if (string.Equals(item.Name,name))
                 {
-                    textBoxNumber.Text = item.Number.ToString();
+                    //textBoxNumber.Text = item.Number.ToString();
+
+                    labelNumberStorage.Content = item.Number.ToString() + " налични" ;
 
                     break;
                 }

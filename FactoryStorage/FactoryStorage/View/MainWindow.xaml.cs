@@ -29,5 +29,11 @@ namespace FactoryStorage.View
             var resultWindow = new Storage();
             resultWindow.Show();
         }
+
+        private void buttonScheme_Click(object sender, RoutedEventArgs e)
+        {
+            var resultWindow = new Scheme();
+            resultWindow.Show();
+        }
     }
 }
