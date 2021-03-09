@@ -20,6 +20,7 @@
                 <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="20,16,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
                 <Label x:Name="label" Content="/57" HorizontalAlignment="Left" Margin="193,16,0,0" VerticalAlignment="Top" Height="25" Width="40" />
                 <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="151,20,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
+                
                 <Button x:Name="buttonPlus" Content="+" HorizontalAlignment="Right" VerticalAlignment="Top" Height = "35" Width = "40" Margin="0,52,263,0" Click="buttonPlus_Click" />
             </Grid>
         </ScrollViewer>
