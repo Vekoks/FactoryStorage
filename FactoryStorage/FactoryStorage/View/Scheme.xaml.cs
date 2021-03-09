@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FactoryStorage.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,10 @@ namespace FactoryStorage.View
     /// </summary>
     public partial class Scheme : Window
     {
+        private bool flagForPlusButton = false;
+        private bool flagForComboBox = false;
+        private bool flagForLable = false; 
+
         public Scheme()
         {
             InitializeComponent();
@@ -26,6 +31,14 @@ namespace FactoryStorage.View
 
         private void buttonPlus_Click(object sender, RoutedEventArgs e)
         {
+            var list = FileProcessing.GetInfomation();
+
+            var element = stackGridBody.Children.OfType<FrameworkElement>().ToList();
+
+            if (element.Count > 10)
+            {
+                return;
+            }
 
             Button buttonPlusNew = new Button()
             {
@@ -37,17 +50,22 @@ namespace FactoryStorage.View
 
             buttonPlusNew.Click += buttonPlus_Click;
 
-            var element = stackGridBody.Children.OfType<FrameworkElement>().ToList();
-
             var resultOldbuttonPlus = element[element.Count - 1];
 
             Thickness marginOldbuttonPlus = resultOldbuttonPlus.Margin;
             Thickness marginbuttonPlusNew = buttonPlusNew.Margin;
 
-            marginbuttonPlusNew.Top = marginOldbuttonPlus.Top;
-            marginbuttonPlusNew.Left = marginOldbuttonPlus.Left;
-            marginbuttonPlusNew.Right = marginOldbuttonPlus.Right;
-            marginbuttonPlusNew.Bottom = marginOldbuttonPlus.Bottom;
+            if (flagForPlusButton)
+            {
+                marginbuttonPlusNew.Top = marginOldbuttonPlus.Top + 65;
+            }
+            else
+            {
+                marginbuttonPlusNew.Top = marginOldbuttonPlus.Top - 80;
+                flagForPlusButton = true;
+            }
+
+            marginbuttonPlusNew.Left = -205;
             buttonPlusNew.Margin = marginbuttonPlusNew;
 
 
@@ -58,32 +76,61 @@ namespace FactoryStorage.View
               Width = 120
             };
 
+            Thickness marginNewButton = comboBox.Margin;
             var resultcomboBox = element[element.Count - 3];
 
-            var topmarginGather= - 15;
-
-            var current = 0.0;
-
-            if ((resultcomboBox.Margin.Top - 15) < 0)
+            if (flagForComboBox)
             {
-                topmarginGather = 15;
-
-                current = resultcomboBox.Margin.Top - 15;
-
+                marginNewButton.Top = resultcomboBox.Margin.Top + 65;
             }
             else
             {
-                current = resultcomboBox.Margin.Top;
+                marginNewButton.Top = resultcomboBox.Margin.Top - 120;
+                flagForComboBox = true;
             }
 
-            Thickness marginNewButton = comboBox.Margin;
-            marginNewButton.Top = current + topmarginGather;
-            marginNewButton.Left = -173;
+            marginNewButton.Left = -203;
             comboBox.Margin = marginNewButton;
+
+            foreach (var item in list)
+            {
+
+                comboBox.Items.Add(item.Name);
+            }
+
+            comboBox.SelectedIndex = 0;
+
+            Label buttonLabel = new Label()
+            {
+                Name = "labe",
+                Height = 25,
+                Width = 40,
+                Content = "/" + list[0].Number.ToString(),
+            };
+
+            Thickness marginNewbuttonLabel = buttonLabel.Margin;
+            var resultbuttonLabel = element[element.Count - 2];
+
+            if (flagForLable)
+            {
+                marginNewbuttonLabel.Top = resultbuttonLabel.Margin.Top + 65;
+            }
+            else
+            {
+                marginNewbuttonLabel.Top = resultbuttonLabel.Margin.Top - 120;
+                flagForLable = true;
+            }
+
+            marginNewbuttonLabel.Left = 65;
+            buttonLabel.Margin = marginNewbuttonLabel;
+
 
             stackGridBody.Children.RemoveAt(stackGridBody.Children.Count - 1);
 
             stackGridBody.Children.Add(comboBox);
+
+            stackGridBody.Children.Add(buttonLabel);
+
             stackGridBody.Children.Add(buttonPlusNew);
 
 
