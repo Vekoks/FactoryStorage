@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FactoryStorage.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="434" Width="638"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="buttonStorage" Content="Наличност" HorizontalAlignment="Left" Margin="106,164,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="buttonStorage_Click"/>
-        <Button x:Name="buttonScheme" Content="Създай схема" HorizontalAlignment="Left" Margin="520,164,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="buttonScheme_Click"/>
+        <Button x:Name="buttonStorage" Content="Наличност" HorizontalAlignment="Left" Margin="81,164,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="buttonStorage_Click"/>
+        <Button x:Name="buttonScheme" Content="Създай схема" HorizontalAlignment="Left" Margin="418,164,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="buttonScheme_Click"/>
         <Label x:Name="labelWelcom" Content="Добре дошли" HorizontalAlignment="Center" Margin="0,57,0,0" VerticalAlignment="Top" FontSize="24"/>
+
 
     </Grid>
 </Window>

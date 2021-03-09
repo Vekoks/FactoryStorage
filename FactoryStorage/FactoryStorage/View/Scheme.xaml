@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FactoryStorage.View"
         mc:Ignorable="d"
-        Title="Scheme" Height="450" Width="800"
+        Title="Scheme" Height="616" Width="811"
         WindowStartupLocation="CenterScreen">
 
     <Grid>
@@ -15,15 +15,18 @@
         <TextBox x:Name="textBoxDiscribe" HorizontalAlignment="Left" Margin="187,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="363" Height="47"/>
         <Label x:Name="labelHeading" Content="Схема" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="63" FontSize="18"/>
 
-        <ScrollViewer Margin="187,170,250,10">
-            <Grid x:Name="stackGridBody" Width="363">
-                <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="20,16,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
-                <Label x:Name="label" Content="/57" HorizontalAlignment="Left" Margin="193,16,0,0" VerticalAlignment="Top" Height="25" Width="40" />
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="151,20,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
-                
-                <Button x:Name="buttonPlus" Content="+" HorizontalAlignment="Right" VerticalAlignment="Top" Height = "35" Width = "40" Margin="0,52,263,0" Click="buttonPlus_Click" />
-            </Grid>
-        </ScrollViewer>
+
+        <ComboBox x:Name="comboBoxStorage" HorizontalAlignment="Left" Margin="212,250,0,0" VerticalAlignment="Top" Width="120" Height="25" SelectionChanged="comboBoxStorage_CelectionChanged"/>
+        <Label x:Name="labelNumber" Content="/57" HorizontalAlignment="Left" Margin="409,250,0,0" VerticalAlignment="Top" Height="25" Width="40"  FontSize="14"/>
+        <TextBox x:Name="textBoxInputNumber" HorizontalAlignment="Left" Margin="349,254,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
+
+        <Button x:Name="buttonPlus" Content="+" HorizontalAlignment="Right" VerticalAlignment="Top" Height = "35" Width = "40" Margin="0,245,291,0" Click="buttonPlus_Click" />
+        <ListBox x:Name="listBoxWithElement" Margin="187,289,250,25" FontSize="14"/>
+        <Label x:Name="label" Content="Избери елемент" HorizontalAlignment="Left" Margin="222,223,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Брой" HorizontalAlignment="Left" Margin="349,223,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Налични" HorizontalAlignment="Left" Margin="400,223,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="Необходими елементи" HorizontalAlignment="Left" Margin="281,187,0,0" VerticalAlignment="Top" FontSize="16"/>
+
 
     </Grid>
 </Window>

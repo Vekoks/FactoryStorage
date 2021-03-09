@@ -1,11 +1,41 @@
 {
   "version": 3,
   "targets": {
-    "net5.0-windows7.0": {}
+    "net5.0-windows7.0": {
+      "AutoCompleteTextBox/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/AutoCompleteTextBox.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AutoCompleteTextBox.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "AutoCompleteTextBox/1.1.1": {
+      "sha512": "C26NY7I8DaQsb1HUL2HuIHdD85yn3BTGvT84xKUVerLJVil+KhTSYrnHXREzaoVXpUEzSPX4SnNFPaRwXgGJ/g==",
+      "type": "package",
+      "path": "autocompletetextbox/1.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autocompletetextbox.1.1.1.nupkg.sha512",
+        "autocompletetextbox.nuspec",
+        "lib/net452/AutoCompleteTextBox.dll",
+        "lib/net472/AutoCompleteTextBox.dll",
+        "lib/netcoreapp3.1/AutoCompleteTextBox.dll"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0-windows7.0": []
+    "net5.0-windows7.0": [
+      "AutoCompleteTextBox >= 1.1.1"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Vesko\\.nuget\\packages\\": {},
@@ -53,6 +83,12 @@
     "frameworks": {
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
+        "dependencies": {
+          "AutoCompleteTextBox": {
+            "target": "Package",
+            "version": "[1.1.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

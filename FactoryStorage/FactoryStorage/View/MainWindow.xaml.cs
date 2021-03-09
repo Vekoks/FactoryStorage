@@ -35,5 +35,6 @@ namespace FactoryStorage.View
             var resultWindow = new Scheme();
             resultWindow.Show();
         }
+
     }
 }

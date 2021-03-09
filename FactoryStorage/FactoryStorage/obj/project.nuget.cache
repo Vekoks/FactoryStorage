@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hDf7y78SEffDUMZxVDPJtDTlHUUSm1XZ9lCUJ32gDabhBN4FXoMygtErnkwbliPQSkDaWpDGjWwjCuaHO2Nhbg==",
+  "dgSpecHash": "m0/j8PxrGsklgFDGLbeqBCHudDT640Cn3iX6OVzgAOmWZSCV+kBBxzyPMC5CUANs/KtOj5VESyIfIqfdPcPbiA==",
   "success": true,
   "projectFilePath": "D:\\GitHub\\FactoryStorageProject\\FactoryStorage\\FactoryStorage\\FactoryStorage.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Vesko\\.nuget\\packages\\autocompletetextbox\\1.1.1\\autocompletetextbox.1.1.1.nupkg.sha512"
+  ],
   "logs": []
 }

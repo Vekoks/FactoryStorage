@@ -41,8 +41,12 @@ namespace FactoryStorage.View
         {
             var resultWindow = new GatherStorage();
             resultWindow.Show();
+        }
 
-            this.Hide();
+        private void buttonCriticalNumber_Click(object sender, RoutedEventArgs e)
+        {
+            var resultCriticalNumberWindow = new CriticalNumber();
+            resultCriticalNumberWindow.Show();
         }
     }
 }

@@ -11,4 +11,8 @@
     <Folder Include="Resources\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoCompleteTextBox" Version="1.1.1" />
+  </ItemGroup>
+
 </Project>

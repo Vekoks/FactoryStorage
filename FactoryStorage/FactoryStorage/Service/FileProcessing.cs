@@ -75,8 +75,6 @@ namespace FactoryStorage.Service
             {
                 var error = e.Message;
             }
-
-            MessageBox.Show("Успешено добавяне");
         }
     }
 }

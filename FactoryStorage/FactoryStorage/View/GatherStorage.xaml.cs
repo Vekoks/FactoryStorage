@@ -1,4 +1,5 @@
-﻿using FactoryStorage.Models;
+﻿using AutoCompleteTextBox.Editors;
+using FactoryStorage.Models;
 using FactoryStorage.Service;
 using System;
 using System.Collections.Generic;
@@ -29,50 +30,43 @@ namespace FactoryStorage.View
 
             listOrderFromFile = FileProcessing.GetInfomation();
 
-            foreach (var item in listOrderFromFile)
-            {
+            InitializeElementAutoCompleteTextBox();
 
-                comboBoxChoice.Items.Add(item.Name);
-            }
+            //foreach (var item in listOrderFromFile)
+            //{
+
+            //    comboBoxChoice.Items.Add(item.Name);
+            //}
+
+
         }
 
         private void buttonGather_Click(object sender, RoutedEventArgs e)
         {
-            var name = comboBoxChoice.SelectedValue.ToString();
+            var name = textboxAuto.Text;
 
             var number = int.Parse(textBoxNumber.Text);
+
+            if (name == "" || number == 0)
+            {
+                MessageBox.Show("Полето за въвеждане и за брой не трябва да е празно или 0");
+
+                return;
+            }
+
 
             foreach (var item in listOrderFromFile)
             {
                 if (string.Equals(item.Name, name))
                 {
                     item.Number += number;
-
-                    labelNumberStorage.Content = item.Number.ToString() + " налични";
                 }
             }
-
-
 
             FileProcessing.SaveInfomation(listOrderFromFile);
         }
 
-        private void comboBoxChoice_CelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var name = comboBoxChoice.SelectedValue.ToString();
 
-            foreach (var item in listOrderFromFile)
-            {
-                if (string.Equals(item.Name,name))
-                {
-                    //textBoxNumber.Text = item.Number.ToString();
-
-                    labelNumberStorage.Content = item.Number.ToString() + " налични" ;
-
-                    break;
-                }
-            } 
-        }
 
         private void buttonUp_Click(object sender, RoutedEventArgs e)
         {
@@ -102,5 +96,24 @@ namespace FactoryStorage.View
             var resultWindow = new Storage();
             resultWindow.Show();
         }
+
+        public void InitializeElementAutoCompleteTextBox()
+        {
+            var provider = new SuggestionProvider(x =>
+            {
+                var suggestions = new List<string>();
+
+                foreach (var item in listOrderFromFile)
+                {
+                    suggestions.Add(item.Name);
+
+                }
+
+                return suggestions.Where(y => y.Contains(x));
+            });
+
+            textboxAuto.Provider = provider;
+        }
+
     }
 }

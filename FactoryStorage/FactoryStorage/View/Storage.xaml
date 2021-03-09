@@ -11,7 +11,8 @@
         <ListBox x:Name="listBox" Margin="42,88,266,66"/>
         <Label x:Name="labelHeading" Content="Наличност" HorizontalAlignment="Center" Margin="0,27,0,0" VerticalAlignment="Top" FontSize="24"/>
         <Button x:Name="buttonGather" Content="Добави" HorizontalAlignment="Left" Margin="612,188,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="buttonGather_Click"/>
-        <Label x:Name="labelGather" Content="Добави нови материали" HorizontalAlignment="Left" Margin="567,136,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="labelGather" Content="Добави материали" HorizontalAlignment="Left" Margin="588,136,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Button x:Name="buttonCriticalNumber" Content="Критични стойности" HorizontalAlignment="Left" Margin="596,254,0,0" VerticalAlignment="Top" Height="28" Width="132" Click="buttonCriticalNumber_Click"/>
 
     </Grid>
 </Window>
