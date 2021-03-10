@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryStorage.Models
 {
-    public class StorageModel
+    public class StorageModel : IModels
     {
         public string Name { get; set; }
 

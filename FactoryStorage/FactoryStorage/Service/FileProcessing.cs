@@ -1,4 +1,5 @@
 ﻿using FactoryStorage.Models;
+using FactoryStorage.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,33 +12,21 @@ namespace FactoryStorage.Service
 {
     public class FileProcessing
     {
-        public static List<StorageModel> GetInfomation()
+        public static List<IModels> GetResources()
         {
-            string filePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
+            var informationFromFile = DataRepositorycs.GetInfomationFromFile("Resources");
 
-            var filePathSplit = filePath.Split('\\');
-
-            var myFilePath = "";
-
-            for (int i = 0; i < filePathSplit.Length - 3; i++)
-            {
-                myFilePath += filePathSplit[i] + "\\";
-            }
-
-            myFilePath += "Resources\\Resources.txt";
-
-            var informationFromFile = File.ReadAllLines(myFilePath);
-
-            var listOrders = new List<StorageModel>();
+            var listOrders = new List<IModels>();
 
             for (int i = 0; i < informationFromFile.Count(); i++)
             {
                 var recordAllInfo = informationFromFile[i].Split('-');
 
-                var currentOrder = new StorageModel();
-
-                currentOrder.Name = recordAllInfo[0];
-                currentOrder.Number = int.Parse(recordAllInfo[1]);
+                var currentOrder = new StorageModel
+                {
+                    Name = recordAllInfo[0],
+                    Number = int.Parse(recordAllInfo[1])
+                };
 
                 listOrders.Add(currentOrder);
             }
@@ -45,36 +34,31 @@ namespace FactoryStorage.Service
             return listOrders;
         }
 
-        public static void SaveInfomation(List<StorageModel> list)
+        public static List<IModels> GetCriticalNumber()
         {
-            string filePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
+            var informationFromFile = DataRepositorycs.GetInfomationFromFile("CriticalNumber");
 
-            var filePathSplit = filePath.Split('\\');
+            var listCriticalElelements = new List<IModels>();
 
-            var myFilePath = "";
-
-            for (int i = 0; i < filePathSplit.Length - 3; i++)
+            for (int i = 0; i < informationFromFile.Count(); i++)
             {
-                myFilePath += filePathSplit[i] + "\\";
-            }
+                var recordAllInfo = informationFromFile[i].Split('-');
 
-            myFilePath += "Resources\\Resources.txt";
-
-            try
-            {
-                StreamWriter sw = new StreamWriter(myFilePath);
-
-                foreach (var item in list)
+                var currentElelement = new CriticaNumbers
                 {
-                    sw.WriteLine(item.Name + "-" + item.Number);
-                }
+                    Name = recordAllInfo[0],
+                    Number = int.Parse(recordAllInfo[1])
+                };
 
-                sw.Close();
+                listCriticalElelements.Add(currentElelement);
             }
-            catch (Exception e)
-            {
-                var error = e.Message;
-            }
+
+            return listCriticalElelements;
+        }
+
+        public static void SaveInfomationInFile(List<IModels> list, string fileName)
+        {
+            DataRepositorycs.SaveInfomation(list, fileName);
         }
     }
 }

@@ -21,20 +21,14 @@ namespace FactoryStorage.View
     /// </summary>
     public partial class Storage : Window
     {
-        private List<StorageModel> listOrderFromFile;
+        private List<IModels> listStorageModel;
+        private List<IModels> listCriticaNumbers;
 
         public Storage()
         {
             InitializeComponent();
 
-            listOrderFromFile = FileProcessing.GetInfomation();
-
-            foreach (var item in listOrderFromFile)
-            {
-                string result = item.Name + " : " + item.Number.ToString();
-
-                listBox.Items.Add(result);
-            }
+            InitializeListBox();
         }
 
         private void buttonGather_Click(object sender, RoutedEventArgs e)
@@ -47,6 +41,38 @@ namespace FactoryStorage.View
         {
             var resultCriticalNumberWindow = new CriticalNumber();
             resultCriticalNumberWindow.Show();
+        }
+
+        private void InitializeListBox()
+        {
+
+            listStorageModel = FileProcessing.GetResources();
+            listCriticaNumbers = FileProcessing.GetCriticalNumber();
+
+            var criticalNumberElement = 0;
+
+            foreach (var element in listCriticaNumbers)
+            {
+                if (string.Equals("Елементи",element.Name))
+                {
+                    criticalNumberElement = element.Number;
+                }
+            }
+
+            foreach (var elementStorage in listStorageModel)
+            {
+
+                Label newLabel = new Label();
+
+                if (criticalNumberElement >= elementStorage.Number)
+                {
+                    newLabel.Foreground = new SolidColorBrush(Colors.Red);
+                }
+
+                newLabel.Content = elementStorage.Name + " : " + elementStorage.Number.ToString(); ;
+
+                listBox.Items.Add(newLabel);
+            }
         }
     }
 }

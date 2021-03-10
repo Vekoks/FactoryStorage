@@ -22,13 +22,13 @@ namespace FactoryStorage.View
     /// </summary>
     public partial class GatherStorage : Window
     {
-        private List<StorageModel> listOrderFromFile;
+        private List<IModels> listOrderFromFile;
 
         public GatherStorage()
         {
             InitializeComponent();
 
-            listOrderFromFile = FileProcessing.GetInfomation();
+            listOrderFromFile = FileProcessing.GetResources();
 
             InitializeElementAutoCompleteTextBox();
 
@@ -54,16 +54,30 @@ namespace FactoryStorage.View
                 return;
             }
 
+            var existResources = false;
 
             foreach (var item in listOrderFromFile)
             {
                 if (string.Equals(item.Name, name))
                 {
+                    existResources = true;
+
                     item.Number += number;
                 }
             }
 
-            FileProcessing.SaveInfomation(listOrderFromFile);
+            if (!existResources)
+            {
+                var newResource = new StorageModel
+                {
+                    Name = name,
+                    Number = number
+                };
+
+                listOrderFromFile.Add(newResource);
+            }
+
+            FileProcessing.SaveInfomationInFile(listOrderFromFile, "Resources");
         }
 
 
@@ -89,12 +103,6 @@ namespace FactoryStorage.View
             }
 
             textBoxNumber.Text = number.ToString();
-        }
-
-        private void GatherStorage_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            var resultWindow = new Storage();
-            resultWindow.Show();
         }
 
         public void InitializeElementAutoCompleteTextBox()

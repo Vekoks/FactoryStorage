@@ -31,7 +31,7 @@ namespace FactoryStorage.View
 
         private void buttonPlus_Click(object sender, RoutedEventArgs e)
         {
-            var list = FileProcessing.GetInfomation();
+            var list = FileProcessing.GetResources();
 
             var name = comboBoxStorage.SelectedValue.ToString();
 
@@ -78,7 +78,7 @@ namespace FactoryStorage.View
 
                         item.Number = residue;
 
-                        FileProcessing.SaveInfomation(list);
+                        FileProcessing.SaveInfomationInFile(list, "Resources");
                     }
 
                 }
@@ -91,7 +91,7 @@ namespace FactoryStorage.View
         public void InicialisationElement()
         {
 
-            var list = FileProcessing.GetInfomation();
+            var list = FileProcessing.GetResources();
 
             foreach (var item in list)
             {
@@ -105,7 +105,7 @@ namespace FactoryStorage.View
 
         private void comboBoxStorage_CelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var list = FileProcessing.GetInfomation();
+            var list = FileProcessing.GetResources();
 
             var name = comboBoxStorage.SelectedValue.ToString();
 

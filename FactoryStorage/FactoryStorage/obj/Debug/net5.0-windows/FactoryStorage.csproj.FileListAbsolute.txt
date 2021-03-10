@@ -81,3 +81,11 @@ D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\net5.0-w
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\net5.0-windows\FactoryStorage.csproj.CopyComplete
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\net5.0-windows\View\CriticalNumber.g.cs
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\net5.0-windows\View\CriticalNumber.baml
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\net5.0-windows\EntityFramework.SqlServer.dll
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\net5.0-windows\EntityFramework.dll
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\net5.0-windows\System.Data.SqlClient.dll
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\net5.0-windows\runtimes\win-arm64\native\sni.dll
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\net5.0-windows\runtimes\win-x64\native\sni.dll
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\net5.0-windows\runtimes\win-x86\native\sni.dll
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
