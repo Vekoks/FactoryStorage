@@ -24,7 +24,9 @@ namespace FactoryStorage.View
     {
         private List<IModels> listOrderFromFile;
 
-        public GatherStorage()
+        private Storage previous;
+
+        public GatherStorage(Storage storageWin)
         {
             InitializeComponent();
 
@@ -32,13 +34,7 @@ namespace FactoryStorage.View
 
             InitializeElementAutoCompleteTextBox();
 
-            //foreach (var item in listOrderFromFile)
-            //{
-
-            //    comboBoxChoice.Items.Add(item.Name);
-            //}
-
-
+            previous = storageWin;
         }
 
         private void buttonGather_Click(object sender, RoutedEventArgs e)
@@ -78,9 +74,9 @@ namespace FactoryStorage.View
             }
 
             FileProcessing.SaveInfomationInFile(listOrderFromFile, "Resources");
+
+            previous.InitializeListBox();
         }
-
-
 
         private void buttonUp_Click(object sender, RoutedEventArgs e)
         {
@@ -123,5 +119,14 @@ namespace FactoryStorage.View
             textboxAuto.Provider = provider;
         }
 
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            previous.InitializeListBox();
+        }
     }
 }

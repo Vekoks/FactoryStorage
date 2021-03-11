@@ -21,6 +21,8 @@ namespace FactoryStorage.View
     /// </summary>
     public partial class Scheme : Window
     {
+        public string NameOFLoadScheme { get; set; }
+
         public Scheme()
         {
             InitializeComponent();
@@ -87,10 +89,8 @@ namespace FactoryStorage.View
 
         }
 
-
         public void InicialisationElement()
         {
-
             var list = FileProcessing.GetResources();
 
             foreach (var item in list)
@@ -101,6 +101,22 @@ namespace FactoryStorage.View
             comboBoxStorage.SelectedIndex = 0;
 
             labelNumber.Content = "/" + list[0].Number.ToString();
+
+            if (!String.IsNullOrEmpty(NameOFLoadScheme))
+            {
+                var loadScheme = FileProcessing.LoadScheme(NameOFLoadScheme);
+
+                textBoxTopic.Text = loadScheme.Topic;
+
+                textBoxDiscribe.Text = loadScheme.Description;
+
+                listBoxWithElement.Items.Clear();
+
+                foreach (var element in loadScheme.Elements)
+                {
+                    listBoxWithElement.Items.Add(element.Name + " : " + element.Number + " бр.");
+                }
+            }
         }
 
         private void comboBoxStorage_CelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -133,5 +149,61 @@ namespace FactoryStorage.View
                 }
             }
         }
+
+        private void buttonSaveScheme_Click(object sender, RoutedEventArgs e)
+        {
+            var strTopic = textBoxTopic.Text;
+
+            var strdescription = textBoxDiscribe.Text;
+
+            var newSchema = new SchemeModel();
+
+            newSchema.Topic = strTopic;
+            newSchema.Description = strdescription;
+            newSchema.Elements = new List<StorageModel>();
+
+            var listElement = listBoxWithElement.Items;
+
+            foreach (var element in listElement)
+            {
+                var stringSplit = element.ToString().Trim().Split(':');
+
+                var stringNumber = stringSplit[1].Trim().Split(' ');
+
+                var newElelemt = new StorageModel();
+
+                newElelemt.Name = stringSplit[0];
+
+                newElelemt.Number = int.Parse(stringNumber[0]);
+
+                newSchema.Elements.Add(newElelemt);
+
+            }
+
+            FileProcessing.SaveSchemeInFile(newSchema);
+
+            textBoxTopic.Text = "";
+
+            textBoxDiscribe.Text = "";
+
+            textBoxInputNumber.Text = "0";
+
+            listBoxWithElement.Items.Clear();
+
+            MessageBox.Show("Схемата се записа");
+        }
+
+        private void buttonLoadScheme_Click(object sender, RoutedEventArgs e)
+        {
+            LoadScheme newLoadScheme = new LoadScheme(this);
+            newLoadScheme.Show();
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 }

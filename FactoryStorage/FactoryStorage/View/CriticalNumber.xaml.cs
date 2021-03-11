@@ -20,9 +20,13 @@ namespace FactoryStorage.View
     /// </summary>
     public partial class CriticalNumber : Window
     {
-        public CriticalNumber()
+        private Storage previous;
+
+        public CriticalNumber(Storage storageWin)
         {
             InitializeComponent();
+
+            previous = storageWin;
         }
 
         private void buttonChange_Click(object sender, RoutedEventArgs e)
@@ -40,6 +44,13 @@ namespace FactoryStorage.View
             }
 
             FileProcessing.SaveInfomationInFile(listCriticalElelment, "CriticalNumber");
+
+            previous.InitializeListBox();
+        }
+
+        private void buttonExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

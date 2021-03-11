@@ -33,23 +33,25 @@ namespace FactoryStorage.View
 
         private void buttonGather_Click(object sender, RoutedEventArgs e)
         {
-            var resultWindow = new GatherStorage();
+            var resultWindow = new GatherStorage(this);
             resultWindow.Show();
         }
 
         private void buttonCriticalNumber_Click(object sender, RoutedEventArgs e)
         {
-            var resultCriticalNumberWindow = new CriticalNumber();
+            var resultCriticalNumberWindow = new CriticalNumber(this);
             resultCriticalNumberWindow.Show();
         }
 
-        private void InitializeListBox()
+        public void InitializeListBox()
         {
 
             listStorageModel = FileProcessing.GetResources();
             listCriticaNumbers = FileProcessing.GetCriticalNumber();
 
             var criticalNumberElement = 0;
+
+            listBox.Items.Clear();
 
             foreach (var element in listCriticaNumbers)
             {
@@ -58,6 +60,8 @@ namespace FactoryStorage.View
                     criticalNumberElement = element.Number;
                 }
             }
+
+            labelCriticalNumber.Content = "Критична стоност на елементите: " + criticalNumberElement.ToString();
 
             foreach (var elementStorage in listStorageModel)
             {
@@ -73,6 +77,11 @@ namespace FactoryStorage.View
 
                 listBox.Items.Add(newLabel);
             }
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

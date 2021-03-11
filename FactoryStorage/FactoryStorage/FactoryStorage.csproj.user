@@ -13,6 +13,9 @@
     <Compile Update="View\GatherStorage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\LoadScheme.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\GatherStorage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\LoadScheme.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MainWindow.xaml">

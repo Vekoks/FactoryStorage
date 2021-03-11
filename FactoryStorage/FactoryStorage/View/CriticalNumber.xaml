@@ -9,9 +9,10 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="labelheading" Content="Критични стойности" HorizontalAlignment="Left" Margin="162,33,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="textBoxMinNumber" HorizontalAlignment="Left" Margin="95,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="124" Height="24"/>
-        <Button x:Name="buttonChange" Content="Промени" HorizontalAlignment="Left" Margin="321,0,0,0" VerticalAlignment="Center" Height="29" Width="86" Click="buttonChange_Click"/>
-        <Label x:Name="labelMinNumber" Content="Минимален брой елементити" HorizontalAlignment="Left" Margin="62,98,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="textBoxMinNumber" HorizontalAlignment="Left" Margin="132,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" Height="24"/>
+        <Button x:Name="buttonChange" Content="Промени" HorizontalAlignment="Left" Margin="321,150,0,0" VerticalAlignment="Top" Height="29" Width="86" Click="buttonChange_Click"/>
+        <Label x:Name="labelMinNumber" Content="Минимален брой елементити" HorizontalAlignment="Left" Margin="62,109,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="buttonExit" Content="Назад" HorizontalAlignment="Left" Margin="209,222,0,0" VerticalAlignment="Top" Height="29" Width="86" FontSize="14" Click="buttonExit_Click" />
 
     </Grid>
 </Window>
