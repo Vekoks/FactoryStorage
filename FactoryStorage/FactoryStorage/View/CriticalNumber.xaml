@@ -1,0 +1,17 @@
+﻿<Window x:Class="FactoryStorage.View.CriticalNumber"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FactoryStorage.View"
+        mc:Ignorable="d"
+        Title="CriticalNumber" Height="315" Width="527"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label x:Name="labelheading" Content="Критични стойности" HorizontalAlignment="Left" Margin="162,33,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="textBoxMinNumber" HorizontalAlignment="Left" Margin="95,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="124" Height="24"/>
+        <Button x:Name="buttonChange" Content="Промени" HorizontalAlignment="Left" Margin="321,0,0,0" VerticalAlignment="Center" Height="29" Width="86" Click="buttonChange_Click"/>
+        <Label x:Name="labelMinNumber" Content="Минимален брой елементити" HorizontalAlignment="Left" Margin="62,98,0,0" VerticalAlignment="Top" FontSize="14"/>
+
+    </Grid>
+</Window>
