@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FactoryStorage.View"
         mc:Ignorable="d"
-        Title="Storage" Height="450" Width="800"
+        Title="Колекция" Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <ListBox x:Name="listBox" Margin="42,88,0,66" HorizontalAlignment="Left" Width="525" />

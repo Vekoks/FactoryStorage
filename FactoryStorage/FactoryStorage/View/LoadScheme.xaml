@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FactoryStorage.View"
         mc:Ignorable="d"
-        Title="LoadScheme" Height="253" Width="362"
+        Title="Зареди схема" Height="253" Width="362"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="buttonLoad" Content="Зареди" HorizontalAlignment="Left" Margin="86,160,0,0" VerticalAlignment="Top" Height="34" Width="72" FontSize="14" Click="buttonLoad_Click"/>
