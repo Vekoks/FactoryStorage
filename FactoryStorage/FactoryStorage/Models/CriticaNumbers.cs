@@ -11,5 +11,7 @@ namespace FactoryStorage.Models
         public string Name { get; set; }
 
         public int Number { get; set; }
+
+        public int CriticalNmber { get; set; }
     }
 }

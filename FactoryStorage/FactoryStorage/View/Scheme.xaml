@@ -8,28 +8,27 @@
         Title="Схеми" Height="616" Width="811"
         WindowStartupLocation="CenterScreen">
 
-    <Grid>
+    <Grid Name="Grid">
         <TextBox x:Name="textBoxTopic" HorizontalAlignment="Left" Margin="187,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="363" Height="26"/>
         <Label x:Name="labelTopic" Content="Тема" HorizontalAlignment="Left" Margin="118,45,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label x:Name="labelDiscribe" Content="Описание" HorizontalAlignment="Left" Margin="86,103,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="textBoxDiscribe" HorizontalAlignment="Left" Margin="187,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="363" Height="47"/>
         <Label x:Name="labelHeading" Content="Схема" HorizontalAlignment="Left" Margin="330,10,0,0" VerticalAlignment="Top" Width="88" FontSize="20"/>
+        <TextBox x:Name="textBoxInputNumber" HorizontalAlignment="Left" Margin="364,254,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
+        <TextBox x:Name="textBoxCriticalNumber" HorizontalAlignment="Left" Margin="543,254,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
 
-
-        <ComboBox x:Name="comboBoxStorage" HorizontalAlignment="Left" Margin="212,250,0,0" VerticalAlignment="Top" Width="120" Height="25" SelectionChanged="comboBoxStorage_CelectionChanged"/>
-        <Label x:Name="labelNumber" Content="/57" HorizontalAlignment="Left" Margin="409,250,0,0" VerticalAlignment="Top" Height="25" Width="40"  FontSize="14"/>
-        <TextBox x:Name="textBoxInputNumber" HorizontalAlignment="Left" Margin="349,254,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
-
-        <Button x:Name="buttonPlus" Content="Добави" HorizontalAlignment="Left" VerticalAlignment="Top" Height = "35" Width = "82" Margin="482,245,0,0" Click="buttonPlus_Click" FontSize="14" />
+        <Button x:Name="buttonPlus" Content="Добави" HorizontalAlignment="Left" VerticalAlignment="Top" Height = "35" Width = "82" Margin="613,245,0,0" Click="buttonPlus_Click" FontSize="14" />
         <ListBox x:Name="listBoxWithElement" Margin="176,289,0,25" FontSize="14" HorizontalAlignment="Left" Width="428"/>
-        <Label x:Name="label" Content="Избери елемент" HorizontalAlignment="Left" Margin="222,223,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Брой" HorizontalAlignment="Left" Margin="349,223,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Налични" HorizontalAlignment="Left" Margin="400,223,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="Необходими елементи" HorizontalAlignment="Left" Margin="281,187,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="labelNumberElelment" Content="Въведи елемент" HorizontalAlignment="Left" Margin="86,250,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelCount" Content="Брой" HorizontalAlignment="Left" Margin="321,250,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelElement" Content="Елементи" HorizontalAlignment="Left" Margin="334,187,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Button x:Name="buttonLoadScheme" Content="Зареди схема" HorizontalAlignment="Left" Margin="619,372,0,0" VerticalAlignment="Top" Height="30" Width="120" FontSize="14" Click="buttonLoadScheme_Click"/>
-        <Button x:Name="buttonSaveScheme" Content="Запази схема" HorizontalAlignment="Left" Margin="621,432,0,0" VerticalAlignment="Top" Height="30" Width="120" FontSize="14" Click="buttonSaveScheme_Click"/>
+        <Button x:Name="buttonSaveScheme" Content="Запази схема" HorizontalAlignment="Left" Margin="619,432,0,0" VerticalAlignment="Top" Height="30" Width="120" FontSize="14" Click="buttonSaveScheme_Click"/>
         <Button x:Name="buttonBack" Content="Назад" HorizontalAlignment="Left" Margin="621,487,0,0" VerticalAlignment="Top" Height="30" Width="120" FontSize="14" Click="buttonBack_Click"/>
 
+        <TextBox x:Name="textNameElement" HorizontalAlignment="Left" Margin="190,252,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="21"/>
+        <Label x:Name="labelCriticalNumber" Content="Критична стойност" HorizontalAlignment="Left" Margin="423,250,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonNewScheme" Content="Нова схема" HorizontalAlignment="Left" VerticalAlignment="Top" Height = "35" Width = "82" Margin="638,310,0,0" FontSize="14" Click="buttonNewScheme_Click" />
 
     </Grid>
 </Window>

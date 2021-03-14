@@ -10,11 +10,8 @@
     <Grid>
         <ListBox x:Name="listBox" Margin="42,88,0,66" HorizontalAlignment="Left" Width="525" />
         <Label x:Name="labelHeading" Content="Наличност" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <Button x:Name="buttonGather" Content="Добави" HorizontalAlignment="Left" Margin="612,188,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="buttonGather_Click" FontSize="14"/>
-        <Label x:Name="labelGather" Content="Добави материали" HorizontalAlignment="Left" Margin="588,136,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Button x:Name="buttonCriticalNumber" Content="Критични стойности" HorizontalAlignment="Left" Margin="588,258,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="buttonCriticalNumber_Click" FontSize="14"/>
-        <Button x:Name="buttonBack" Content="Назад" HorizontalAlignment="Left" Margin="662,355,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="14" Click="buttonBack_Click" />
-        <Label x:Name="labelCriticalNumber" Content="Критична стойност на елементите: 0" HorizontalAlignment="Left" Margin="107,0,0,20" VerticalAlignment="Bottom" FontSize="16" Height="30" Width="293" Foreground="#FFF10A0A"/>
+        <Button x:Name="buttonCriticalNumber" Content="Критични стойности" HorizontalAlignment="Left" Margin="602,171,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="buttonCriticalNumber_Click" FontSize="14"/>
+        <Button x:Name="buttonBack" Content="Назад" HorizontalAlignment="Left" Margin="627,237,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="14" Click="buttonBack_Click" />
 
     </Grid>
 </Window>

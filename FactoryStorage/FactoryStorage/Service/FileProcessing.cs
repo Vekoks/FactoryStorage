@@ -27,35 +27,14 @@ namespace FactoryStorage.Service
                 var currentOrder = new StorageModel
                 {
                     Name = recordAllInfo[0],
-                    Number = int.Parse(recordAllInfo[1])
+                    Number = int.Parse(recordAllInfo[1]),
+                    CriticalNmber = int.Parse(recordAllInfo[2]),
                 };
 
                 listOrders.Add(currentOrder);
             }
 
             return listOrders;
-        }
-
-        public static List<IModels> GetCriticalNumber()
-        {
-            var informationFromFile = DataRepositorycs.GetInfomationFromFile("CriticalNumber");
-
-            var listCriticalElelements = new List<IModels>();
-
-            for (int i = 0; i < informationFromFile.Count(); i++)
-            {
-                var recordAllInfo = informationFromFile[i].Split('%');
-
-                var currentElelement = new CriticaNumbers
-                {
-                    Name = recordAllInfo[0],
-                    Number = int.Parse(recordAllInfo[1])
-                };
-
-                listCriticalElelements.Add(currentElelement);
-            }
-
-            return listCriticalElelements;
         }
 
         public static void SaveInfomationInFile(List<IModels> list, string fileName)

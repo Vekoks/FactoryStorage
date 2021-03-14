@@ -1,4 +1,5 @@
-﻿using FactoryStorage.Service;
+﻿using FactoryStorage.Models;
+using FactoryStorage.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,37 +21,84 @@ namespace FactoryStorage.View
     /// </summary>
     public partial class CriticalNumber : Window
     {
-        private Storage previous;
 
-        public CriticalNumber(Storage storageWin)
+        private List<IModels> listStorageModel;
+
+        public CriticalNumber()
         {
             InitializeComponent();
 
-            previous = storageWin;
+            InitializeElement();
         }
 
         private void buttonChange_Click(object sender, RoutedEventArgs e)
         {
             var minNumber = textBoxMinNumber.Text;
 
-            var listCriticalElelment = FileProcessing.GetCriticalNumber();
+            var selectElement = (Label)listBoxCriticalElement.SelectedItem;
 
-            foreach (var element in listCriticalElelment)
+            if (selectElement == null)
             {
-                if (string.Equals("Елементи", element.Name))
+                MessageBox.Show("Трябва да бъде избран елемент");
+
+                return;
+            }
+
+            var listText = selectElement.Content.ToString().Split(' ');
+
+            foreach (var elementStorage in listStorageModel)
+            {
+                if (string.Equals(elementStorage.Name, listText[0]))
                 {
-                    element.Number = int.Parse(minNumber);
+                    elementStorage.CriticalNmber = int.Parse(minNumber);
                 }
             }
 
-            FileProcessing.SaveInfomationInFile(listCriticalElelment, "CriticalNumber");
+            FileProcessing.SaveInfomationInFile(listStorageModel, "Resources");
 
-            previous.InitializeListBox();
-        }
+            this.InitializeElement();
+            }
 
         private void buttonExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        public void InitializeElement()
+        {
+            listStorageModel = FileProcessing.GetResources();
+
+            listBoxCriticalElement.Items.Clear();
+
+            foreach (var elementStorage in listStorageModel)
+            {
+                Label newLabel = new Label();
+
+                if (elementStorage.CriticalNmber >= elementStorage.Number)
+                {
+                    newLabel.Foreground = new SolidColorBrush(Colors.Red);
+
+                    newLabel.Content = elementStorage.Name + " : " + elementStorage.Number.ToString() + " бр";
+
+                    listBoxCriticalElement.Items.Add(newLabel);
+                }
+            }
+        }
+
+
+        private void listBoxCriticalElement_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectElement = (Label)listBoxCriticalElement.SelectedItem;
+
+            var listText = selectElement.Content.ToString().Split(' ');
+
+            foreach (var elementStorage in listStorageModel)
+            {
+                if (string.Equals(elementStorage.Name, listText[0]))
+                {
+                    textBoxMinNumber.Text = elementStorage.CriticalNmber.ToString();
+                }
+            }
         }
     }
 }

@@ -51,7 +51,7 @@ namespace FactoryStorage.Resources
 
                 foreach (var item in list)
                 {
-                    sw.WriteLine(item.Name + "%" + item.Number);
+                    sw.WriteLine(item.Name + "%" + item.Number + "%" + item.CriticalNmber);
                 }
 
                 sw.Close();

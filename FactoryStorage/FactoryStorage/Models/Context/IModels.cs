@@ -12,5 +12,6 @@ namespace FactoryStorage.Models
 
         int Number { get; set; }
 
+        int CriticalNmber { get; set; }
     }
 }
