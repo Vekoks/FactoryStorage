@@ -39,3 +39,4 @@ D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\net5.0-w
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\net5.0-windows\ref\FactoryStorage.dll
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\net5.0-windows\FactoryStorage.pdb
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\net5.0-windows\FactoryStorage.genruntimeconfig.cache
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\net5.0-windows\FactoryStorage.csprojAssemblyReference.cache

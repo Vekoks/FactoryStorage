@@ -6,22 +6,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FactoryStorage.View"
         mc:Ignorable="d"
-        Title="Добави наличност" Height="256" Width="411"
-        WindowStartupLocation="CenterScreen" Closed="Window_Closed"
+        Title="Добави наличност" Height="286" Width="411"
+        WindowStartupLocation="CenterScreen"
         >
     <Grid>
 
         <Label x:Name="labelHeading" Content="Добавяне" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Button x:Name="buttonGather" Content="Добави" HorizontalAlignment="Left" Margin="89,164,0,0" VerticalAlignment="Top" Height="30" Width="80" Click="buttonGather_Click" FontSize="14" />
+        <Button x:Name="buttonGather" Content="Добави" HorizontalAlignment="Left" Margin="48,164,0,0" VerticalAlignment="Top" Height="30" Width="80" Click="buttonGather_Click" FontSize="14" />
 
         <TextBox x:Name="textBoxNumber" Text="0" HorizontalAlignment="Left" Margin="237,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="25" TextAlignment="Center"/>
         <Button x:Name="buttonDown" Content="˅" HorizontalAlignment="Left" Margin="243,126,0,0" VerticalAlignment="Top" Width="26" Click="buttonDown_Click" FontSize="14" Height="20"/>
         <Button x:Name="buttonUp" Content="^" HorizontalAlignment="Left" Margin="242,72,0,0" VerticalAlignment="Top" Width="26" Click="buttonUp_Click" FontSize="14" Height="20"/>
-        <Label x:Name="labelChoice" Content="Въведи елемент" HorizontalAlignment="Left" Margin="78,60,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="labelChoice" Content="Избрания елемент" HorizontalAlignment="Left" Margin="78,60,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="labelCollect" Content="бр." HorizontalAlignment="Left" Margin="278,94,0,0" VerticalAlignment="Top"/>
 
-        <Button x:Name="buttonBack" Content="Назад" HorizontalAlignment="Left" Margin="229,164,0,0" VerticalAlignment="Top" Height="30" Width="80" FontSize="14" Click="buttonBack_Click"/>
+        <Button x:Name="buttonBack" Content="Назад" HorizontalAlignment="Left" Margin="160,213,0,0" VerticalAlignment="Top" Height="30" Width="80" FontSize="14" Click="buttonBack_Click"/>
 
-        <wpf:AutoCompleteTextBox x:Name="textboxAuto" Margin="62,94,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="161" Height="33" />
+        <Label x:Name="labelNameElement" Content="" HorizontalAlignment="Left" Margin="78,97,0,0" VerticalAlignment="Top" Width="144"/>
+
+        <Button x:Name="buttonExtraction" Content="Извади" HorizontalAlignment="Center" Margin="0,164,0,0" VerticalAlignment="Top" Height="30" Width="80" Click="buttonExtraction_Click" FontSize="14"/>
+        <Button x:Name="buttonDelete" Content="Премахни" HorizontalAlignment="Left" Margin="284,164,0,0" VerticalAlignment="Top" Height="30" Width="80" Click="buttonDelete_Click" FontSize="14"/>
     </Grid>
 </Window>

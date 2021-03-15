@@ -22,60 +22,96 @@ namespace FactoryStorage.View
     /// </summary>
     public partial class GatherStorage : Window
     {
-        private List<IModels> listOrderFromFile;
 
-        private Storage previous;
+        private List<IModels> listLoadResources;
 
-        public GatherStorage(Storage storageWin)
+        public string NameElementText { get; set; }
+
+        public int Number{ get; set; }
+
+        private Scheme previous;
+
+        public GatherStorage(String elementText, Scheme previousWindows, List<IModels> resouces)
         {
             InitializeComponent();
 
-            listOrderFromFile = FileProcessing.GetResources();
+            listLoadResources = resouces;
 
-            InitializeElementAutoCompleteTextBox();
+            previous = previousWindows;
 
-            previous = storageWin;
+            NameElementText = GetNameFromTextChange(elementText);
+
+            Number = GetNumberFromTextChange(elementText);
+
+            labelNameElement.Content = GetNameFromTextChange(elementText);
+
+            //textBoxNumber.Text = number.ToString();
         }
 
         private void buttonGather_Click(object sender, RoutedEventArgs e)
         {
-            var name = textboxAuto.Text;
-
             var number = int.Parse(textBoxNumber.Text);
 
-            if (name == "" || number == 0)
+            if (NameElementText == "" || number == 0)
             {
                 MessageBox.Show("Полето за въвеждане и за брой не трябва да е празно или 0");
 
                 return;
             }
 
-            var existResources = false;
+            Number += int.Parse(textBoxNumber.Text);
 
-            foreach (var item in listOrderFromFile)
+            previous.TextChangeElement = NameElementText + " : " + Number + " бр.";
+
+            foreach (var item in listLoadResources)
             {
-                if (string.Equals(item.Name, name))
+                if (string.Equals(item.Name, NameElementText))
                 {
-                    existResources = true;
+                    item.Number += int.Parse(textBoxNumber.Text);
 
-                    item.Number += number;
+                    previous.InicialisationChangeElement();
+
+                    return;
                 }
             }
 
-            if (!existResources)
-            {
-                var newResource = new StorageModel
-                {
-                    Name = name,
-                    Number = number
-                };
+        }
 
-                listOrderFromFile.Add(newResource);
+        private void buttonExtraction_Click(object sender, RoutedEventArgs e)
+        {
+            var number = int.Parse(textBoxNumber.Text);
+
+            if (NameElementText == "" || number == 0)
+            {
+                MessageBox.Show("Полето за въвеждане и за брой не трябва да е празно или 0");
+
+                return;
             }
 
-            FileProcessing.SaveInfomationInFile(listOrderFromFile, "Resources");
+            var result = Number - int.Parse(textBoxNumber.Text);
 
-            previous.InitializeListBox();
+            if (result < 0)
+            {
+                MessageBox.Show("Резултата не може да е под нула");
+
+                return;
+            }
+
+            Number -= int.Parse(textBoxNumber.Text);
+
+            previous.TextChangeElement = NameElementText + " : " + Number + " бр.";
+
+            foreach (var item in listLoadResources)
+            {
+                if (string.Equals(item.Name, NameElementText))
+                {
+                    item.Number -= int.Parse(textBoxNumber.Text);
+
+                    previous.InicialisationChangeElement();
+
+                    return;
+                }
+            }
         }
 
         private void buttonUp_Click(object sender, RoutedEventArgs e)
@@ -101,32 +137,40 @@ namespace FactoryStorage.View
             textBoxNumber.Text = number.ToString();
         }
 
-        public void InitializeElementAutoCompleteTextBox()
-        {
-            var provider = new SuggestionProvider(x =>
-            {
-                var suggestions = new List<string>();
-
-                foreach (var item in listOrderFromFile)
-                {
-                    suggestions.Add(item.Name);
-
-                }
-
-                return suggestions.Where(y => y.Contains(x));
-            });
-
-            textboxAuto.Provider = provider;
-        }
-
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+        private int GetNumberFromTextChange(string textChange)
         {
-            previous.InitializeListBox();
+            var listString = textChange.Split(' ');
+
+            return int.Parse(listString[2]);
+        }
+
+        private string GetNameFromTextChange(string textChange)
+        {
+            var listString = textChange.Split(' ');
+
+            return listString[0];
+        }
+
+        private void buttonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            previous.DeleteNameElement = NameElementText + " : " + Number + " бр.";
+
+            foreach (var item in listLoadResources)
+            {
+                if (string.Equals(item.Name, NameElementText))
+                {
+                    item.Number -= Number;
+
+                    previous.InicialisationDeleteElement();
+
+                    return;
+                }
+            }  
         }
     }
 }
