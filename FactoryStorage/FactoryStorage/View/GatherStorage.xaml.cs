@@ -54,7 +54,7 @@ namespace FactoryStorage.View
 
             if (NameElementText == "" || number == 0)
             {
-                MessageBox.Show("Полето за въвеждане и за брой не трябва да е празно или 0");
+                MessageBox.Show("Полето за брой не трябва да е празно или 0");
 
                 return;
             }
@@ -69,12 +69,13 @@ namespace FactoryStorage.View
                 {
                     item.Number += int.Parse(textBoxNumber.Text);
 
-                    previous.InicialisationChangeElement();
-
-                    return;
+                    break;
                 }
             }
 
+            MessageBox.Show("Добавихте успешно");
+
+            previous.InicialisationChangeElement();
         }
 
         private void buttonExtraction_Click(object sender, RoutedEventArgs e)
@@ -83,7 +84,7 @@ namespace FactoryStorage.View
 
             if (NameElementText == "" || number == 0)
             {
-                MessageBox.Show("Полето за въвеждане и за брой не трябва да е празно или 0");
+                MessageBox.Show("Полето за брой не трябва да е празно или 0");
 
                 return;
             }
@@ -107,11 +108,13 @@ namespace FactoryStorage.View
                 {
                     item.Number -= int.Parse(textBoxNumber.Text);
 
-                    previous.InicialisationChangeElement();
-
-                    return;
+                    break;
                 }
             }
+
+            MessageBox.Show("Извадихте успешно");
+
+            previous.InicialisationChangeElement();
         }
 
         private void buttonUp_Click(object sender, RoutedEventArgs e)
@@ -144,16 +147,16 @@ namespace FactoryStorage.View
 
         private int GetNumberFromTextChange(string textChange)
         {
-            var listString = textChange.Split(' ');
+            var listString = textChange.Split(':')[1].Split(" ");
 
-            return int.Parse(listString[2]);
+            return int.Parse(listString[1]);
         }
 
         private string GetNameFromTextChange(string textChange)
         {
-            var listString = textChange.Split(' ');
+            var listString = textChange.Split(':')[0].TrimEnd(' ');
 
-            return listString[0];
+            return listString;
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
@@ -166,11 +169,13 @@ namespace FactoryStorage.View
                 {
                     item.Number -= Number;
 
-                    previous.InicialisationDeleteElement();
-
-                    return;
+                    break;
                 }
-            }  
+            }
+
+            MessageBox.Show("Изтрихте успешно");
+
+            previous.InicialisationDeleteElement();
         }
     }
 }

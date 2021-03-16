@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FactoryStorage.View"
         mc:Ignorable="d"
-        Title="Добави наличност" Height="286" Width="411"
+        Title="Променяне на наличноста" Height="290" Width="410"
         WindowStartupLocation="CenterScreen"
         >
     <Grid>
@@ -24,7 +24,7 @@
 
         <Label x:Name="labelNameElement" Content="" HorizontalAlignment="Left" Margin="78,97,0,0" VerticalAlignment="Top" Width="144"/>
 
-        <Button x:Name="buttonExtraction" Content="Извади" HorizontalAlignment="Center" Margin="0,164,0,0" VerticalAlignment="Top" Height="30" Width="80" Click="buttonExtraction_Click" FontSize="14"/>
-        <Button x:Name="buttonDelete" Content="Премахни" HorizontalAlignment="Left" Margin="284,164,0,0" VerticalAlignment="Top" Height="30" Width="80" Click="buttonDelete_Click" FontSize="14"/>
+        <Button x:Name="buttonExtraction" Content="Извади" HorizontalAlignment="Left" Margin="164,164,0,0" VerticalAlignment="Top" Height="30" Width="80" Click="buttonExtraction_Click" FontSize="14"/>
+        <Button x:Name="buttonDelete" Content="Премахни" HorizontalAlignment="Left" Margin="282,164,0,0" VerticalAlignment="Top" Height="30" Width="80" Click="buttonDelete_Click" FontSize="14"/>
     </Grid>
 </Window>

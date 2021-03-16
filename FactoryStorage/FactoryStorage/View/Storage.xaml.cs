@@ -44,9 +44,13 @@ namespace FactoryStorage.View
 
             foreach (var elementStorage in listStorageModel)
             {
-                var resoultText = elementStorage.Name + " : " + elementStorage.Number.ToString() + " бр";
+                Label newLabel = new Label();
 
-                listBox.Items.Add(resoultText);
+                newLabel.Content = elementStorage.Name + " : " + elementStorage.Number.ToString() + " бр";
+
+                newLabel.FontSize = 16;
+
+                listBox.Items.Add(newLabel);
             }
         }
 

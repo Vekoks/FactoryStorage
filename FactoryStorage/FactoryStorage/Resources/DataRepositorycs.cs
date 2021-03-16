@@ -83,7 +83,6 @@ namespace FactoryStorage.Resources
                 {
                     fs.Close();
                 }
-
             }
 
             try

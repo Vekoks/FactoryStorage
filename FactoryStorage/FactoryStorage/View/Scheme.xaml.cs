@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,32 +35,32 @@ namespace FactoryStorage.View
         {
             InitializeComponent();
 
-            InicialisationElement();
-
             listLoadResources = FileProcessing.GetResources();
         }
 
         private void buttonPlus_Click(object sender, RoutedEventArgs e)
         {
-            var nameElement = textNameElement.Text.Replace(" ","-");
+            var elementNameWithoutRegex = textNameElement.Text;
+
+            var nameElement = Regex.Replace(elementNameWithoutRegex, @"[^\w\\s]", "");
 
             var numberElement = textBoxInputNumber.Text;
 
             var criticalNumberElement = textBoxCriticalNumber.Text;
 
-            textNameElement.Text = " ";
+            if ((int.Parse(numberElement) == 0) || string.Equals(nameElement, "") || string.Equals(criticalNumberElement, ""))
+            {
+                MessageBox.Show("Всички полета трябва да са попълнени");
+                return;
+            }
+
+            var resoultTextForLable = textNameElement.Text + " : " + numberElement + " бр.";
+
+            textNameElement.Text = "";
 
             textBoxInputNumber.Text = "0";
 
             textBoxCriticalNumber.Text = "0";
-
-            if (int.Parse(numberElement) == 0)
-            {
-                MessageBox.Show("Полето за брой не може да е: 0");
-                return;
-            }
-
-            var resoult = nameElement + " : " + numberElement + " бр.";
 
             var flagIsExsist = false;
 
@@ -69,15 +70,18 @@ namespace FactoryStorage.View
                 {
                     item.Number += int.Parse(numberElement);
 
-                    Button newBoton = new Button();
-                    newBoton.Name = nameElement;
-                    newBoton.Content = "Промени";
-                    newBoton.Click += button_ChangeNumber;
+                    //Button newBoton = new Button();
+                    //newBoton.Name = nameElement;
+                    //newBoton.Content = "Промени";
+                    //newBoton.Click += button_ChangeNumber;
 
+                    var newBoton = TakeNewButton(nameElement);
 
-                    Label newLable = new Label();
-                    newLable.Name = "lable" + nameElement;
-                    newLable.Content = nameElement + " : " + numberElement + " бр.";
+                    //Label newLable = new Label();
+                    //newLable.Name = "lable" + nameElement;
+                    //newLable.Content = resoultTextForLable;
+
+                    var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
 
                     listBoxWithElement.Items.Add(newLable);
 
@@ -92,19 +96,23 @@ namespace FactoryStorage.View
             {
                 listLoadResources.Add(new StorageModel
                 {
-                    Name = nameElement,
+                    Name = elementNameWithoutRegex,
                     Number = int.Parse(numberElement),
                     CriticalNmber = int.Parse(criticalNumberElement),
                 });
 
-                Button newBoton = new Button();
-                newBoton.Name = nameElement;
-                newBoton.Content = "Промени";
-                newBoton.Click += button_ChangeNumber;
+                //Button newBoton = new Button();
+                //newBoton.Name = nameElement;
+                //newBoton.Content = "Промени";
+                //newBoton.Click += button_ChangeNumber;
 
-                Label newLable = new Label();
-                newLable.Name = "lable" + nameElement;
-                newLable.Content = nameElement + " : " + numberElement + " бр.";
+                var newBoton = TakeNewButton(nameElement);
+
+                //Label newLable = new Label();
+                //newLable.Name = "lable" + nameElement;
+                //newLable.Content = resoultTextForLable;
+
+                var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
 
                 listBoxWithElement.Items.Add(newLable);
 
@@ -126,14 +134,20 @@ namespace FactoryStorage.View
 
                 foreach (var element in loadScheme.Elements)
                 {
-                    Button newBoton = new Button();
-                    newBoton.Click += button_ChangeNumber;
-                    newBoton.Name = element.Name;
-                    newBoton.Content = "Промени";
+                    var nameElement = Regex.Replace(element.Name, @"[^\w\\s]", "");
 
-                    Label newLable = new Label();
-                    newLable.Name = "lable" + element.Name;
-                    newLable.Content = element.Name + " : " + element.Number + " бр.";
+                    //Button newBoton = new Button();
+                    //newBoton.Click += button_ChangeNumber;
+                    //newBoton.Name = nameElement;
+                    //newBoton.Content = "Промени";
+
+                    var newBoton = TakeNewButton(nameElement);
+
+                    //Label newLable = new Label();
+                    //newLable.Name = "lable" + nameElement;
+                    //newLable.Content = element.Name + " : " + element.Number + " бр.";
+
+                    var newLable = TakeNewLable("lable" + nameElement, element.Name + " : " + element.Number + " бр.");
 
                     listBoxWithElement.Items.Add(newLable);
 
@@ -154,9 +168,11 @@ namespace FactoryStorage.View
                 {
                     var label = (Label)element;
 
-                    Label newLable = new Label();
-                    newLable.Name = label.Name;
-                    newLable.Content = label.Content;
+                    //Label newLable = new Label();
+                    //newLable.Name = label.Name;
+                    //newLable.Content = label.Content;
+
+                    var newLable = TakeNewLable(label.Name, label.Content.ToString());
 
                     newListBox.Items.Add(newLable);
                 } 
@@ -166,7 +182,11 @@ namespace FactoryStorage.View
 
             if (!String.IsNullOrEmpty(TextChangeElement))
             {
-                var name = "lable" + TextChangeElement.Split(' ')[0];
+                var text = TextChangeElement.Split(':')[0];
+
+                var nameElement = Regex.Replace(text, @"[^\w\\s]", "");
+
+                var name = "lable" + nameElement;
 
                 foreach (var element in newListBox.Items)
                 {
@@ -176,14 +196,18 @@ namespace FactoryStorage.View
 
                         if (string.Equals(label.Name, name))
                         {
-                            Button newBoton = new Button();
-                            newBoton.Click += button_ChangeNumber;
-                            newBoton.Name = TextChangeElement.Split(' ')[0];
-                            newBoton.Content = "Промени";
+                            //Button newBoton = new Button();
+                            //newBoton.Click += button_ChangeNumber;
+                            //newBoton.Name = nameElement;
+                            //newBoton.Content = "Промени";
 
-                            Label newLable = new Label();
-                            newLable.Name = name;
-                            newLable.Content = TextChangeElement;
+                            var newBoton = TakeNewButton(nameElement);
+
+                            //Label newLable = new Label();
+                            //newLable.Name = name;
+                            //newLable.Content = TextChangeElement;
+
+                            var newLable = TakeNewLable(name, TextChangeElement);
 
                             listBoxWithElement.Items.Add(newLable);
 
@@ -191,14 +215,22 @@ namespace FactoryStorage.View
                         }
                         else
                         {
-                            Button newBoton = new Button();
-                            newBoton.Click += button_ChangeNumber;
-                            newBoton.Name = label.Content.ToString().Split(' ')[0];
-                            newBoton.Content = "Промени";
+                            var textName = label.Content.ToString().Split(":")[0];
 
-                            Label newLable = new Label();
-                            newLable.Name = label.Name;
-                            newLable.Content = label.Content;
+                            var nameButton = Regex.Replace(textName, @"[^\w\\s]", "");
+
+                            //Button newBoton = new Button();
+                            //newBoton.Click += button_ChangeNumber;
+                            //newBoton.Name = nameButton;
+                            //newBoton.Content = "Промени";
+
+                            var newBoton = TakeNewButton(nameButton);
+
+                            //Label newLable = new Label();
+                            //newLable.Name = label.Name;
+                            //newLable.Content = label.Content;
+
+                            var newLable = TakeNewLable(label.Name, label.Content.ToString());
 
                             listBoxWithElement.Items.Add(newLable);
 
@@ -221,9 +253,11 @@ namespace FactoryStorage.View
                 {
                     var label = (Label)element;
 
-                    Label newLable = new Label();
-                    newLable.Name = label.Name;
-                    newLable.Content = label.Content;
+                    //Label newLable = new Label();
+                    //newLable.Name = label.Name;
+                    //newLable.Content = label.Content;
+
+                    var newLable = TakeNewLable(label.Name, label.Content.ToString());
 
                     newListBox.Items.Add(newLable);
                 }
@@ -233,7 +267,11 @@ namespace FactoryStorage.View
 
             if (!String.IsNullOrEmpty(DeleteNameElement))
             {
-                var name = "lable" + DeleteNameElement.Split(' ')[0];
+                var text = DeleteNameElement.Split(':')[0].TrimEnd(' ');
+
+                var nameElement = Regex.Replace(text, @"[^\w\\s]", "");
+
+                var name = "lable" + nameElement;
 
                 foreach (var element in newListBox.Items)
                 {
@@ -245,15 +283,23 @@ namespace FactoryStorage.View
                         {
                             continue;
                         }
-    
-                        Button newBoton = new Button();
-                        newBoton.Click += button_ChangeNumber;
-                        newBoton.Name = label.Content.ToString().Split(' ')[0];
-                        newBoton.Content = "Промени";
 
-                        Label newLable = new Label();
-                        newLable.Name = label.Name;
-                        newLable.Content = label.Content;
+                        var textName = label.Content.ToString().Split(":")[0];
+
+                        var nameButton = Regex.Replace(textName, @"[^\w\\s]", "");
+
+                        //Button newBoton = new Button();
+                        //newBoton.Click += button_ChangeNumber;
+                        //newBoton.Name = nameButton;
+                        //newBoton.Content = "Промени";
+
+                        var newBoton = TakeNewButton(nameButton);
+
+                        //Label newLable = new Label();
+                        //newLable.Name = label.Name;
+                        //newLable.Content = label.Content;
+
+                        var newLable = TakeNewLable(label.Name, label.Content.ToString());
 
                         listBoxWithElement.Items.Add(newLable);
 
@@ -263,7 +309,7 @@ namespace FactoryStorage.View
                 }
             }
 
-            TextChangeElement = "";
+            DeleteNameElement = "";
         }
 
         private void buttonSaveScheme_Click(object sender, RoutedEventArgs e)
@@ -271,6 +317,12 @@ namespace FactoryStorage.View
             var strTopic = textBoxTopic.Text;
 
             var strdescription = textBoxDiscribe.Text;
+
+            if ((string.Equals(strTopic, "") || string.Equals(strdescription, "")))
+            {
+                MessageBox.Show("Полето за тема и описание трябва да е попълнено");
+                return;
+            }
 
             var newSchema = new SchemeModel();
 
@@ -292,7 +344,7 @@ namespace FactoryStorage.View
 
                     var newElelemt = new StorageModel();
 
-                    newElelemt.Name = stringSplit[0].Replace(" ", "");
+                    newElelemt.Name = stringSplit[0].TrimEnd(' ');
 
                     newElelemt.Number = int.Parse(stringNumber[1]);
 
@@ -342,6 +394,8 @@ namespace FactoryStorage.View
                     {
                         GatherStorage windowsGatherStorage = new GatherStorage(label.Content.ToString(), this, listLoadResources);
                         windowsGatherStorage.Show();
+
+                        return;
                     }
                 }
             }
@@ -358,6 +412,25 @@ namespace FactoryStorage.View
             listBoxWithElement.Items.Clear();
 
             listLoadResources = FileProcessing.GetResources();
+        }
+
+        private Button TakeNewButton(string nameButton) 
+        {
+            Button newBoton = new Button();
+            newBoton.Name = nameButton;
+            newBoton.Content = "Промени";
+            newBoton.Click += button_ChangeNumber;
+
+            return newBoton;
+        }
+
+        private Label TakeNewLable(string nameLable, string contextLable)
+        {
+            Label newLable = new Label();
+            newLable.Name = nameLable;
+            newLable.Content = contextLable;
+
+            return newLable;
         }
     }
 }

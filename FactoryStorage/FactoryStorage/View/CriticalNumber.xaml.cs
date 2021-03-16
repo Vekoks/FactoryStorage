@@ -44,11 +44,15 @@ namespace FactoryStorage.View
                 return;
             }
 
-            var listText = selectElement.Content.ToString().Split(' ');
+            var listText = selectElement.Content.ToString().Split(':');
+
+            var nameFromSelectElement = listText[0].TrimEnd(' ');
+
+            //var listText = selectElement.Content.ToString().Split(' ');
 
             foreach (var elementStorage in listStorageModel)
             {
-                if (string.Equals(elementStorage.Name, listText[0]))
+                if (string.Equals(elementStorage.Name, nameFromSelectElement))
                 {
                     elementStorage.CriticalNmber = int.Parse(minNumber);
                 }
@@ -80,6 +84,8 @@ namespace FactoryStorage.View
 
                     newLabel.Content = elementStorage.Name + " : " + elementStorage.Number.ToString() + " бр";
 
+                    newLabel.FontSize = 16;
+
                     listBoxCriticalElement.Items.Add(newLabel);
                 }
             }
@@ -90,11 +96,18 @@ namespace FactoryStorage.View
         {
             var selectElement = (Label)listBoxCriticalElement.SelectedItem;
 
-            var listText = selectElement.Content.ToString().Split(' ');
+            if (selectElement == null)
+            {
+                return;
+            }
+            
+            var listText = selectElement.Content.ToString().Split(':');
+
+            var nameFromSelectElement = listText[0].TrimEnd(' ');
 
             foreach (var elementStorage in listStorageModel)
             {
-                if (string.Equals(elementStorage.Name, listText[0]))
+                if (string.Equals(elementStorage.Name, nameFromSelectElement))
                 {
                     textBoxMinNumber.Text = elementStorage.CriticalNmber.ToString();
                 }
