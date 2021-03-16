@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="buttonStorage" Content="Наличност" HorizontalAlignment="Left" Margin="81,164,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="buttonStorage_Click" FontSize="16"/>
-        <Button x:Name="buttonScheme" Content="Създай схема" HorizontalAlignment="Left" Margin="418,164,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="buttonScheme_Click" FontSize="16"/>
+        <Button x:Name="buttonScheme" Content="Схеми" HorizontalAlignment="Left" Margin="418,164,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="buttonScheme_Click" FontSize="16"/>
 
         <Label x:Name="labelWelcom" Content="Добре дошли" HorizontalAlignment="Center" Margin="0,54,0,0" VerticalAlignment="Top" FontSize="24"/>
 

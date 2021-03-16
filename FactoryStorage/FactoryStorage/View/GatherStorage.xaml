@@ -11,7 +11,7 @@
         >
     <Grid>
 
-        <Label x:Name="labelHeading" Content="Добавяне" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="labelHeading" Content="Промяна" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="buttonGather" Content="Добави" HorizontalAlignment="Left" Margin="48,164,0,0" VerticalAlignment="Top" Height="30" Width="80" Click="buttonGather_Click" FontSize="14" />
 
         <TextBox x:Name="textBoxNumber" Text="0" HorizontalAlignment="Left" Margin="237,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Height="25" TextAlignment="Center"/>

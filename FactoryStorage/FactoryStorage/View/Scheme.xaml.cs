@@ -118,6 +118,8 @@ namespace FactoryStorage.View
 
                 listBoxWithElement.Items.Add(newBoton);
             }
+
+            this.SaveScheme();
         }
 
         public void InicialisationElement()
@@ -241,6 +243,8 @@ namespace FactoryStorage.View
             }
 
             TextChangeElement = "";
+
+            this.SaveScheme();
         }
 
         public void InicialisationDeleteElement()
@@ -310,49 +314,15 @@ namespace FactoryStorage.View
             }
 
             DeleteNameElement = "";
+
+            this.SaveScheme();
         }
 
         private void buttonSaveScheme_Click(object sender, RoutedEventArgs e)
         {
-            var strTopic = textBoxTopic.Text;
+            this.SaveScheme();
 
-            var strdescription = textBoxDiscribe.Text;
-
-            if ((string.Equals(strTopic, "") || string.Equals(strdescription, "")))
-            {
-                MessageBox.Show("Полето за тема и описание трябва да е попълнено");
-                return;
-            }
-
-            var newSchema = new SchemeModel();
-
-            newSchema.Topic = strTopic;
-            newSchema.Description = strdescription;
-            newSchema.Elements = new List<StorageModel>();
-
-            var listElement = listBoxWithElement.Items;
-
-            foreach (var element in listElement)
-            {
-                if (element as Label != null)
-                {
-                    var label = (Label)element;
-
-                    var stringSplit = label.Content.ToString().Split(':');
-
-                    var stringNumber = stringSplit[1].Split(' ');
-
-                    var newElelemt = new StorageModel();
-
-                    newElelemt.Name = stringSplit[0].TrimEnd(' ');
-
-                    newElelemt.Number = int.Parse(stringNumber[1]);
-
-                    newSchema.Elements.Add(newElelemt);
-                }
-            }
-
-            FileProcessing.SaveSchemeInFile(newSchema);
+            MessageBox.Show("Схемата се записа");
 
             textBoxTopic.Text = "";
 
@@ -361,10 +331,6 @@ namespace FactoryStorage.View
             textBoxInputNumber.Text = "0";
 
             listBoxWithElement.Items.Clear();
-
-            FileProcessing.SaveInfomationInFile(listLoadResources, "Resources");
-
-            MessageBox.Show("Схемата се записа");
         }
 
         private void buttonLoadScheme_Click(object sender, RoutedEventArgs e)
@@ -412,6 +378,12 @@ namespace FactoryStorage.View
             listBoxWithElement.Items.Clear();
 
             listLoadResources = FileProcessing.GetResources();
+
+            NameOFLoadScheme = "";
+
+            TextChangeElement = "";
+
+            DeleteNameElement = "";
         }
 
         private Button TakeNewButton(string nameButton) 
@@ -431,6 +403,51 @@ namespace FactoryStorage.View
             newLable.Content = contextLable;
 
             return newLable;
+        }
+
+        private void SaveScheme()
+        {
+            var strTopic = textBoxTopic.Text;
+
+            var strdescription = textBoxDiscribe.Text;
+
+            if ((string.Equals(strTopic, "") || string.Equals(strdescription, "")))
+            {
+                MessageBox.Show("Полето за тема и описание трябва да е попълнено");
+                return;
+            }
+
+            var newSchema = new SchemeModel();
+
+            newSchema.Topic = strTopic;
+            newSchema.Description = strdescription;
+            newSchema.Elements = new List<StorageModel>();
+
+            var listElement = listBoxWithElement.Items;
+
+            foreach (var element in listElement)
+            {
+                if (element as Label != null)
+                {
+                    var label = (Label)element;
+
+                    var stringSplit = label.Content.ToString().Split(':');
+
+                    var stringNumber = stringSplit[1].Split(' ');
+
+                    var newElelemt = new StorageModel();
+
+                    newElelemt.Name = stringSplit[0].TrimEnd(' ');
+
+                    newElelemt.Number = int.Parse(stringNumber[1]);
+
+                    newSchema.Elements.Add(newElelemt);
+                }
+            }
+
+            FileProcessing.SaveSchemeInFile(newSchema);
+
+            FileProcessing.SaveInfomationInFile(listLoadResources, "Resources");
         }
     }
 }

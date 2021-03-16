@@ -73,6 +73,8 @@ namespace FactoryStorage.View
                 }
             }
 
+            textBoxNumber.Text = "0";
+
             MessageBox.Show("Добавихте успешно");
 
             previous.InicialisationChangeElement();
@@ -111,6 +113,8 @@ namespace FactoryStorage.View
                     break;
                 }
             }
+
+            textBoxNumber.Text = "0";
 
             MessageBox.Show("Извадихте успешно");
 
