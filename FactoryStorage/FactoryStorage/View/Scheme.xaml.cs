@@ -320,9 +320,10 @@ namespace FactoryStorage.View
 
         private void buttonSaveScheme_Click(object sender, RoutedEventArgs e)
         {
-            this.SaveScheme();
-
-            MessageBox.Show("Схемата се записа");
+            if (this.SaveScheme())
+            {
+                MessageBox.Show("Схемата се записа");
+            }
 
             textBoxTopic.Text = "";
 
@@ -405,7 +406,7 @@ namespace FactoryStorage.View
             return newLable;
         }
 
-        private void SaveScheme()
+        private bool SaveScheme()
         {
             var strTopic = textBoxTopic.Text;
 
@@ -414,7 +415,7 @@ namespace FactoryStorage.View
             if ((string.Equals(strTopic, "") || string.Equals(strdescription, "")))
             {
                 MessageBox.Show("Полето за тема и описание трябва да е попълнено");
-                return;
+                return false;
             }
 
             var newSchema = new SchemeModel();
@@ -448,6 +449,8 @@ namespace FactoryStorage.View
             FileProcessing.SaveSchemeInFile(newSchema);
 
             FileProcessing.SaveInfomationInFile(listLoadResources, "Resources");
+
+            return true;
         }
     }
 }
