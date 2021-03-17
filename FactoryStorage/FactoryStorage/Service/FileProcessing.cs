@@ -3,12 +3,8 @@ using FactoryStorage.Models.Context;
 using FactoryStorage.Resources;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace FactoryStorage.Service
 {
@@ -56,7 +52,7 @@ namespace FactoryStorage.Service
         {
             var fullNameScheme = "Schemes\\" + nameScheme;
 
-            var listInfomation= DataRepositorycs.GetInfomationFromFile(fullNameScheme);
+            var listInfomation = DataRepositorycs.GetInfomationFromFile(fullNameScheme);
 
             var newScheme = new SchemeModel();
 

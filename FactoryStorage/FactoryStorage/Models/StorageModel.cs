@@ -1,8 +1,8 @@
-﻿using System;
+﻿using FactoryStorage.Models.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FactoryStorage.Models
 {
@@ -12,6 +12,6 @@ namespace FactoryStorage.Models
 
         public int Number { get; set; }
 
-        public int CriticalNmber { get; set ; }
+        public int CriticalNmber { get; set; }
     }
 }

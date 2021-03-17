@@ -1,12 +1,11 @@
-﻿using AutoCompleteTextBox.Editors;
-using FactoryStorage.Models;
+﻿using FactoryStorage.Models;
+using FactoryStorage.Models.Context;
 using FactoryStorage.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -89,7 +88,7 @@ namespace FactoryStorage.View
 
                     flagIsExsist = true;
                 }
-              
+
             }
 
             if (!flagIsExsist)
@@ -177,7 +176,7 @@ namespace FactoryStorage.View
                     var newLable = TakeNewLable(label.Name, label.Content.ToString());
 
                     newListBox.Items.Add(newLable);
-                } 
+                }
             }
 
             listBoxWithElement.Items.Clear();
@@ -217,7 +216,7 @@ namespace FactoryStorage.View
                         }
                         else
                         {
-                            var textName = label.Content.ToString().Split(":")[0];
+                            var textName = label.Content.ToString().Split(':')[0];
 
                             var nameButton = Regex.Replace(textName, @"[^\w\\s]", "");
 
@@ -288,7 +287,7 @@ namespace FactoryStorage.View
                             continue;
                         }
 
-                        var textName = label.Content.ToString().Split(":")[0];
+                        var textName = label.Content.ToString().Split(':')[0];
 
                         var nameButton = Regex.Replace(textName, @"[^\w\\s]", "");
 
@@ -308,7 +307,7 @@ namespace FactoryStorage.View
                         listBoxWithElement.Items.Add(newLable);
 
                         listBoxWithElement.Items.Add(newBoton);
-                        
+
                     }
                 }
             }
@@ -387,7 +386,7 @@ namespace FactoryStorage.View
             DeleteNameElement = "";
         }
 
-        private Button TakeNewButton(string nameButton) 
+        private Button TakeNewButton(string nameButton)
         {
             Button newBoton = new Button();
             newBoton.Name = nameButton;

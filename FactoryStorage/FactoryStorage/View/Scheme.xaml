@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FactoryStorage.View"
         mc:Ignorable="d"
-        Title="Схеми" Height="616" Width="811"
+        Title="Схеми" Height="615" Width="810"
         WindowStartupLocation="CenterScreen">
-
     <Grid Name="Grid">
         <TextBox x:Name="textBoxTopic" HorizontalAlignment="Left" Margin="187,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="363" Height="26"/>
         <Label x:Name="labelTopic" Content="Тема" HorizontalAlignment="Left" Margin="118,45,0,0" VerticalAlignment="Top" FontSize="18"/>

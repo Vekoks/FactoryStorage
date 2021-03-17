@@ -1,10 +1,9 @@
-﻿using FactoryStorage.Models;
+﻿using FactoryStorage.Models.Context;
 using FactoryStorage.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -29,6 +28,7 @@ namespace FactoryStorage.View
 
             InitializeListBox();
         }
+
 
         private void buttonCriticalNumber_Click(object sender, RoutedEventArgs e)
         {

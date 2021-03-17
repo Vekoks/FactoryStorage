@@ -1,10 +1,9 @@
-﻿using FactoryStorage.Models;
+﻿using FactoryStorage.Models.Context;
 using FactoryStorage.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,7 +20,6 @@ namespace FactoryStorage.View
     /// </summary>
     public partial class CriticalNumber : Window
     {
-
         private List<IModels> listStorageModel;
 
         public CriticalNumber()
@@ -61,7 +59,7 @@ namespace FactoryStorage.View
             FileProcessing.SaveInfomationInFile(listStorageModel, "Resources");
 
             this.InitializeElement();
-            }
+        }
 
         private void buttonExit_Click(object sender, RoutedEventArgs e)
         {
@@ -100,7 +98,7 @@ namespace FactoryStorage.View
             {
                 return;
             }
-            
+
             var listText = selectElement.Content.ToString().Split(':');
 
             var nameFromSelectElement = listText[0].TrimEnd(' ');

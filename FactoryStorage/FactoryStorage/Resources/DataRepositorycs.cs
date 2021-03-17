@@ -1,15 +1,13 @@
-﻿using FactoryStorage.Models;
-using FactoryStorage.Models.Context;
+﻿using FactoryStorage.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FactoryStorage.Resources
 {
-    public static class DataRepositorycs
+    public class DataRepositorycs
     {
         public static string[] GetInfomationFromFile(string nameFile)
         {
@@ -19,7 +17,7 @@ namespace FactoryStorage.Resources
 
             var myFilePath = "";
 
-            for (int i = 0; i < filePathSplit.Length - 3; i++)
+            for (int i = 0; i < filePathSplit.Length - 2; i++)
             {
                 myFilePath += filePathSplit[i] + "\\";
             }
@@ -30,7 +28,7 @@ namespace FactoryStorage.Resources
 
         }
 
-        public static void SaveInfomation<T>(List<T> list , string nameFile) where T : IModels
+        public static void SaveInfomation<T>(List<T> list, string nameFile) where T : IModels
         {
             string filePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
 
@@ -38,7 +36,7 @@ namespace FactoryStorage.Resources
 
             var myFilePath = "";
 
-            for (int i = 0; i < filePathSplit.Length - 3; i++)
+            for (int i = 0; i < filePathSplit.Length - 2; i++)
             {
                 myFilePath += filePathSplit[i] + "\\";
             }
@@ -51,6 +49,11 @@ namespace FactoryStorage.Resources
 
                 foreach (var item in list)
                 {
+                    if (item.Number == 0)
+                    {
+                        continue;
+                    }
+
                     sw.WriteLine(item.Name + "%" + item.Number + "%" + item.CriticalNmber);
                 }
 
@@ -70,7 +73,7 @@ namespace FactoryStorage.Resources
 
             var myFilePath = "";
 
-            for (int i = 0; i < filePathSplit.Length - 3; i++)
+            for (int i = 0; i < filePathSplit.Length - 2; i++)
             {
                 myFilePath += filePathSplit[i] + "\\";
             }
@@ -116,7 +119,7 @@ namespace FactoryStorage.Resources
 
             var myFilePath = "";
 
-            for (int i = 0; i < filePathSplit.Length - 3; i++)
+            for (int i = 0; i < filePathSplit.Length - 2; i++)
             {
                 myFilePath += filePathSplit[i] + "\\";
             }
@@ -134,7 +137,7 @@ namespace FactoryStorage.Resources
                 listNameFile.Add(file.Name.Split('.')[0]);
             }
 
-            return listNameFile; 
+            return listNameFile;
         }
     }
 }

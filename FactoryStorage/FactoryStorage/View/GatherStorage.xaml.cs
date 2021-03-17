@@ -1,11 +1,8 @@
-﻿using AutoCompleteTextBox.Editors;
-using FactoryStorage.Models;
-using FactoryStorage.Service;
+﻿using FactoryStorage.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,12 +19,11 @@ namespace FactoryStorage.View
     /// </summary>
     public partial class GatherStorage : Window
     {
-
         private List<IModels> listLoadResources;
 
         public string NameElementText { get; set; }
 
-        public int Number{ get; set; }
+        public int Number { get; set; }
 
         private Scheme previous;
 
@@ -151,7 +147,7 @@ namespace FactoryStorage.View
 
         private int GetNumberFromTextChange(string textChange)
         {
-            var listString = textChange.Split(':')[1].Split(" ");
+            var listString = textChange.Split(':')[1].Split(' ');
 
             return int.Parse(listString[1]);
         }
