@@ -52,7 +52,7 @@ namespace FactoryStorage.View
             {
                 if (string.Equals(elementStorage.Name, nameFromSelectElement))
                 {
-                    elementStorage.CriticalNmber = int.Parse(minNumber);
+                    elementStorage.CriticalNumber = int.Parse(minNumber);
                 }
             }
 
@@ -76,7 +76,7 @@ namespace FactoryStorage.View
             {
                 Label newLabel = new Label();
 
-                if (elementStorage.CriticalNmber >= elementStorage.Number)
+                if (elementStorage.CriticalNumber >= elementStorage.Number)
                 {
                     newLabel.Foreground = new SolidColorBrush(Colors.Red);
 
@@ -107,7 +107,7 @@ namespace FactoryStorage.View
             {
                 if (string.Equals(elementStorage.Name, nameFromSelectElement))
                 {
-                    textBoxMinNumber.Text = elementStorage.CriticalNmber.ToString();
+                    textBoxMinNumber.Text = elementStorage.CriticalNumber.ToString();
                 }
             }
         }

@@ -24,7 +24,7 @@ namespace FactoryStorage.Service
                 {
                     Name = recordAllInfo[0],
                     Number = int.Parse(recordAllInfo[1]),
-                    CriticalNmber = int.Parse(recordAllInfo[2]),
+                    CriticalNumber = int.Parse(recordAllInfo[2]),
                 };
 
                 listOrders.Add(currentOrder);

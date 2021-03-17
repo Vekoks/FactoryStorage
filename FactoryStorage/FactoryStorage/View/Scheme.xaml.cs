@@ -97,7 +97,7 @@ namespace FactoryStorage.View
                 {
                     Name = elementNameWithoutRegex,
                     Number = int.Parse(numberElement),
-                    CriticalNmber = int.Parse(criticalNumberElement),
+                    CriticalNumber = int.Parse(criticalNumberElement),
                 });
 
                 //Button newBoton = new Button();

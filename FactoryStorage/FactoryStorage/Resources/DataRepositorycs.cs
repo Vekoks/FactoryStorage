@@ -54,7 +54,7 @@ namespace FactoryStorage.Resources
                         continue;
                     }
 
-                    sw.WriteLine(item.Name + "%" + item.Number + "%" + item.CriticalNmber);
+                    sw.WriteLine(item.Name + "%" + item.Number + "%" + item.CriticalNumber);
                 }
 
                 sw.Close();
