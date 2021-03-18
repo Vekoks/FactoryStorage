@@ -39,7 +39,7 @@ namespace FactoryStorage.View
 
         private void buttonPlus_Click(object sender, RoutedEventArgs e)
         {
-            var elementNameWithoutRegex = textNameElement.Text;
+            var elementNameWithoutRegex = textNameElement.Text.TrimEnd(' ');
 
             var nameElement = Regex.Replace(elementNameWithoutRegex, @"[^\w\\s]", "");
 
@@ -65,9 +65,26 @@ namespace FactoryStorage.View
 
             foreach (var item in listLoadResources)
             {
-                if (string.Equals(item.Name, nameElement))
+                if (string.Equals(item.Name, elementNameWithoutRegex))
                 {
                     item.Number += int.Parse(numberElement);
+
+                    foreach (var element in listBoxWithElement.Items)
+                    {
+                        if (element as Label != null)
+                        {
+                            var label = (Label)element;
+
+                            var existElement = label.Content.ToString().Split(':')[0].TrimEnd(' ');
+
+                            if (string.Equals(item.Name, existElement))
+                            {
+                                MessageBox.Show("Вече съществува такъв елемент");
+
+                                return;
+                            }
+                        }
+                    }
 
                     //Button newBoton = new Button();
                     //newBoton.Name = nameElement;
@@ -87,9 +104,12 @@ namespace FactoryStorage.View
                     listBoxWithElement.Items.Add(newBoton);
 
                     flagIsExsist = true;
+
+                    break;
                 }
 
             }
+
 
             if (!flagIsExsist)
             {
