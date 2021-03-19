@@ -63,51 +63,51 @@ namespace FactoryStorage.View
 
             var flagIsExsist = false;
 
-                    foreach (var element in listBoxWithElement.Items)
-                    {
-                        if (element as Label != null)
+            foreach (var element in listBoxWithElement.Items)
+            {
+                  if (element as Label != null)
+                  {
+                       var label = (Label)element;
+
+                        var existElement = label.Content.ToString().Split(':')[0].TrimEnd(' ');
+
+                        if (string.Equals(item.Name, existElement))
                         {
-                            var label = (Label)element;
+                             MessageBox.Show("Вече съществува такъв елемент");
 
-                            var existElement = label.Content.ToString().Split(':')[0].TrimEnd(' ');
-
-                            if (string.Equals(item.Name, existElement))
-                            {
-                                MessageBox.Show("Вече съществува такъв елемент");
-
-                                return;
-                            }
+                             return;
                         }
                     }
+              }
                     
-                    foreach (var item in listLoadResources)
-                    {
-                       if (string.Equals(item.Name, elementNameWithoutRegex))
-                       {
-                         item.Number += int.Parse(numberElement);
+              foreach (var item in listLoadResources)
+              {
+                   if (string.Equals(item.Name, elementNameWithoutRegex))
+                   {
+                       item.Number += int.Parse(numberElement);
          
-                         flagIsExsist = true;
+                       flagIsExsist = true; 
 
-                         break;
-                       }
-                    }
+                       //Button newBoton = new Button();
+                       //newBoton.Name = nameElement;
+                       //newBoton.Content = "Промени";
+                       //newBoton.Click += button_ChangeNumber;
 
-                    //Button newBoton = new Button();
-                    //newBoton.Name = nameElement;
-                    //newBoton.Content = "Промени";
-                    //newBoton.Click += button_ChangeNumber;
+                       var newBoton = TakeNewButton(nameElement);
 
-                    var newBoton = TakeNewButton(nameElement);
+                       //Label newLable = new Label();
+                       //newLable.Name = "lable" + nameElement;
+                       //newLable.Content = resoultTextForLable;
 
-                    //Label newLable = new Label();
-                    //newLable.Name = "lable" + nameElement;
-                    //newLable.Content = resoultTextForLable;
+                       var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
 
-                    var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
+                       listBoxWithElement.Items.Add(newLable);
 
-                    listBoxWithElement.Items.Add(newLable);
-
-                    listBoxWithElement.Items.Add(newBoton);
+                       listBoxWithElement.Items.Add(newBoton);
+                       
+                       break;
+                   }
+            }
                 
             if (!flagIsExsist)
             {
