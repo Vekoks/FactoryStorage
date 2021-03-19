@@ -63,12 +63,6 @@ namespace FactoryStorage.View
 
             var flagIsExsist = false;
 
-            foreach (var item in listLoadResources)
-            {
-                if (string.Equals(item.Name, elementNameWithoutRegex))
-                {
-                    item.Number += int.Parse(numberElement);
-
                     foreach (var element in listBoxWithElement.Items)
                     {
                         if (element as Label != null)
@@ -84,6 +78,18 @@ namespace FactoryStorage.View
                                 return;
                             }
                         }
+                    }
+                    
+                    foreach (var item in listLoadResources)
+                    {
+                       if (string.Equals(item.Name, elementNameWithoutRegex))
+                       {
+                         item.Number += int.Parse(numberElement);
+         
+                         flagIsExsist = true;
+
+                         break;
+                       }
                     }
 
                     //Button newBoton = new Button();
@@ -102,15 +108,7 @@ namespace FactoryStorage.View
                     listBoxWithElement.Items.Add(newLable);
 
                     listBoxWithElement.Items.Add(newBoton);
-
-                    flagIsExsist = true;
-
-                    break;
-                }
-
-            }
-
-
+                
             if (!flagIsExsist)
             {
                 listLoadResources.Add(new StorageModel
