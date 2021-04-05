@@ -1,5 +1,6 @@
 ﻿using FactoryStorage.Models.Context;
 using FactoryStorage.Service;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace FactoryStorage.View
         {
             listStorageModel = FileProcessing.GetResources();
 
-            listBox.Items.Clear();
+            listBoxItem.Items.Clear();
 
             foreach (var elementStorage in listStorageModel)
             {
@@ -50,13 +51,44 @@ namespace FactoryStorage.View
 
                 newLabel.FontSize = 16;
 
-                listBox.Items.Add(newLabel);
+                listBoxItem.Items.Add(newLabel);
             }
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            string fileNameAndPath = "";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                fileNameAndPath = saveFileDialog.FileName + ".pdf";
+            }
+
+            if (fileNameAndPath == string.Empty)
+            {
+                return;
+            }
+
+            var listInformation = new List<string>();
+
+            foreach (var element in listBoxItem.Items)
+            {
+                if (element as Label != null)
+                {
+                    var label = (Label)element;
+
+                    listInformation.Add(label.Content.ToString());
+                }
+            }
+
+            FileProcessing.SavePdfFile(fileNameAndPath, "Наличност", listInformation);
         }
     }
 }

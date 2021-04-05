@@ -1,5 +1,6 @@
 ﻿using FactoryStorage.Models.Context;
 using FactoryStorage.Service;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,6 +111,37 @@ namespace FactoryStorage.View
                     textBoxMinNumber.Text = elementStorage.CriticalNumber.ToString();
                 }
             }
+        }
+
+        private void buttonSavePdf_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            string fileNameAndPath = "";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                fileNameAndPath = saveFileDialog.FileName + ".pdf";
+            }
+
+            if (fileNameAndPath == string.Empty)
+            {
+                return;
+            }
+
+            var listInformation = new List<string>();
+
+            foreach (var element in listBoxCriticalElement.Items)
+            {
+                if (element as Label != null)
+                {
+                    var label = (Label)element;
+
+                    listInformation.Add(label.Content.ToString());
+                }
+            }
+
+            FileProcessing.SavePdfFile(fileNameAndPath, "Критични стойности", listInformation);
         }
     }
 }

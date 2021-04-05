@@ -77,7 +77,7 @@ namespace FactoryStorage.View
 
                              return;
                         }
-                    }
+                   }
               }
                     
               foreach (var item in listLoadResources)

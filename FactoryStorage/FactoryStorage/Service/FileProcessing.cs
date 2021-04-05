@@ -77,5 +77,10 @@ namespace FactoryStorage.Service
 
             return newScheme;
         }
+
+        public static void SavePdfFile(string PathFile, string Topic, List<string> InformationContext)
+        {
+            DataRepositorycs.SaveInfoToPdfFile(PathFile, Topic, InformationContext);
+        }
     }
 }

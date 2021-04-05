@@ -10,10 +10,10 @@
     <Grid>
         <Label x:Name="labelheading" Content="Критични стойности" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="textBoxMinNumber" HorizontalAlignment="Left" Margin="312,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" Height="24"/>
-        <Button x:Name="buttonChange" Content="Промени" HorizontalAlignment="Left" Margin="300,413,0,0" VerticalAlignment="Top" Height="29" Width="86" Click="buttonChange_Click"/>
+        <Button x:Name="buttonChange" Content="Промени" HorizontalAlignment="Left" Margin="254,412,0,0" VerticalAlignment="Top" Height="29" Width="86" Click="buttonChange_Click"/>
         <Label x:Name="labelMinNumber" Content="Критична стойност на елемента" HorizontalAlignment="Left" Margin="79,363,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Button x:Name="buttonExit" Content="Назад" HorizontalAlignment="Left" Margin="166,412,0,0" VerticalAlignment="Top" Height="29" Width="86" FontSize="14" Click="buttonExit_Click" />
+        <Button x:Name="buttonExit" Content="Назад" HorizontalAlignment="Left" Margin="390,412,0,0" VerticalAlignment="Top" Height="29" Width="86" FontSize="14" Click="buttonExit_Click" />
         <ListBox x:Name="listBoxCriticalElement" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="92,69,0,0" Height="270" Width="414" SelectionChanged="listBoxCriticalElement_SelectionChanged"/>
-
+        <Button x:Name="buttonSavePdf" Content="Запази" HorizontalAlignment="Left" Margin="121,412,0,0" VerticalAlignment="Top" Height="29" Width="86" FontSize="14" Click="buttonSavePdf_Click"/>
     </Grid>
 </Window>
