@@ -8,11 +8,11 @@
         Title="Колекция" Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListBox x:Name="listBoxItem" Margin="42,88,0,66" HorizontalAlignment="Left" Width="525" />
+        <ListBox x:Name="listBoxItem" Margin="42,88,0,66" HorizontalAlignment="Left" Width="525" SelectionChanged="listBoxItem_SelectionChanged" />
         <Label x:Name="labelHeading" Content="Наличност" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" FontSize="24"/>
         <Button x:Name="buttonCriticalNumber" Content="Критични стойности" HorizontalAlignment="Left" Margin="602,171,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="buttonCriticalNumber_Click" FontSize="14"/>
         <Button x:Name="buttonBack" Content="Назад" HorizontalAlignment="Left" Margin="630,307,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="14" Click="buttonBack_Click" />
-        <Button x:Name="button" Content="Запази наличност" HorizontalAlignment="Left" Margin="602,239,0,0" VerticalAlignment="Top" Width="150" Height="35" FontSize="14" Click="button_Click"/>
+        <Button x:Name="buttonSavePdf" Content="Запази наличност" HorizontalAlignment="Left" Margin="602,239,0,0" VerticalAlignment="Top" Width="150" Height="35" FontSize="14" Click="buttonSavePdf_Click"/>
 
     </Grid>
 </Window>

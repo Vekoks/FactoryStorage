@@ -85,6 +85,9 @@
     <Compile Include="View\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewTransaction.xaml.cs">
+      <DependentUpon>ViewTransaction.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\CriticalNumber.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Storage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewTransaction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,6 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Resources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Transaction.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

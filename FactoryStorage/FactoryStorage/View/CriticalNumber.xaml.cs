@@ -90,7 +90,6 @@ namespace FactoryStorage.View
             }
         }
 
-
         private void listBoxCriticalElement_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectElement = (Label)listBoxCriticalElement.SelectedItem;
@@ -142,6 +141,8 @@ namespace FactoryStorage.View
             }
 
             FileProcessing.SavePdfFile(fileNameAndPath, "Критични стойности", listInformation);
+
+            MessageBox.Show("Успешно записване на файла");
         }
     }
 }

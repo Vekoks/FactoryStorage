@@ -60,8 +60,9 @@ namespace FactoryStorage.View
             this.Close();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void buttonSavePdf_Click(object sender, RoutedEventArgs e)
         {
+
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
             string fileNameAndPath = "";
@@ -89,6 +90,30 @@ namespace FactoryStorage.View
             }
 
             FileProcessing.SavePdfFile(fileNameAndPath, "Наличност", listInformation);
+
+            MessageBox.Show("Успешно записване на файла");
+        }
+
+        private void listBoxItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = listBoxItem.SelectedItem;
+
+            var nameSelectedElement = "";
+
+            if (item as Label != null)
+            {
+                var label = (Label)item;
+
+                var context = label.Content.ToString();
+
+                nameSelectedElement = context.Split(':')[0].TrimEnd(' ');
+            }
+
+            var list = FileProcessing.GetTransaction(nameSelectedElement);
+
+            ViewTransaction view = new ViewTransaction(list);
+
+            view.Show();
         }
     }
 }

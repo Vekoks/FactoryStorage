@@ -82,5 +82,44 @@ namespace FactoryStorage.Service
         {
             DataRepositorycs.SaveInfoToPdfFile(PathFile, Topic, InformationContext);
         }
+
+        public static void SaveTransaction(string currentTransation)
+        {
+            DataRepositorycs.SaveTransaction("Transaction", currentTransation);
+        }
+
+        public static List<string> GetTransaction(string nameElement)
+        {
+            var listElement = DataRepositorycs.GetInfomationFromFile("Transaction");
+
+            var listFindElement = new List<string>();
+
+            foreach (var element in listElement)
+            {
+                var elementFromFile = element.Split('%');
+
+                var elementNameFromFile = elementFromFile[0];
+
+                var elementInformation = elementFromFile[1];
+
+                if (string.Equals(elementNameFromFile, nameElement))
+                {
+                    listFindElement.Add(elementInformation);
+                }
+            }
+
+            if (listFindElement.Count > 5)
+            {
+                var numberForDelete = listFindElement.Count - 5;
+
+                for (int i = 0; i < numberForDelete; i++)
+                {
+                    listFindElement.RemoveAt(i);
+                }
+            }
+
+            return listFindElement;
+        }
+
     }
 }

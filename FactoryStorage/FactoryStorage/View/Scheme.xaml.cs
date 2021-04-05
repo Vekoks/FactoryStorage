@@ -65,50 +65,54 @@ namespace FactoryStorage.View
 
             foreach (var element in listBoxWithElement.Items)
             {
-                  if (element as Label != null)
-                  {
-                       var label = (Label)element;
+                if (element as Label != null)
+                {
+                    var label = (Label)element;
 
-                        var existElement = label.Content.ToString().Split(':')[0].TrimEnd(' ');
+                    var existElement = label.Content.ToString().Split(':')[0].TrimEnd(' ');
 
-                        if (string.Equals(elementNameWithoutRegex, existElement))
-                        {
-                             MessageBox.Show("Вече съществува този елемент");
+                    if (string.Equals(elementNameWithoutRegex, existElement))
+                    {
+                        MessageBox.Show("Вече съществува този елемент");
 
-                             return;
-                        }
-                   }
-              }
-                    
-              foreach (var item in listLoadResources)
-              {
-                   if (string.Equals(item.Name, elementNameWithoutRegex))
-                   {
-                       item.Number += int.Parse(numberElement);
-         
-                       flagIsExsist = true; 
-
-                       //Button newBoton = new Button();
-                       //newBoton.Name = nameElement;
-                       //newBoton.Content = "Промени";
-                       //newBoton.Click += button_ChangeNumber;
-
-                       var newBoton = TakeNewButton(nameElement);
-
-                       //Label newLable = new Label();
-                       //newLable.Name = "lable" + nameElement;
-                       //newLable.Content = resoultTextForLable;
-
-                       var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
-
-                       listBoxWithElement.Items.Add(newLable);
-
-                       listBoxWithElement.Items.Add(newBoton);
-                       
-                       break;
-                   }
+                        return;
+                    }
+                }
             }
-                
+
+            foreach (var item in listLoadResources)
+            {
+                if (string.Equals(item.Name, elementNameWithoutRegex))
+                {
+                    item.Number += int.Parse(numberElement);
+
+                    var typeTransaction = elementNameWithoutRegex + "%Добавяне на " + numberElement +"бр " + DateTime.Now.ToString();
+
+                    FileProcessing.SaveTransaction(typeTransaction);
+
+                    flagIsExsist = true;
+
+                    //Button newBoton = new Button();
+                    //newBoton.Name = nameElement;
+                    //newBoton.Content = "Промени";
+                    //newBoton.Click += button_ChangeNumber;
+
+                    var newBoton = TakeNewButton(nameElement);
+
+                    //Label newLable = new Label();
+                    //newLable.Name = "lable" + nameElement;
+                    //newLable.Content = resoultTextForLable;
+
+                    var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
+
+                    listBoxWithElement.Items.Add(newLable);
+
+                    listBoxWithElement.Items.Add(newBoton);
+
+                    break;
+                }
+            }
+
             if (!flagIsExsist)
             {
                 listLoadResources.Add(new StorageModel
@@ -117,6 +121,10 @@ namespace FactoryStorage.View
                     Number = int.Parse(numberElement),
                     CriticalNumber = int.Parse(criticalNumberElement),
                 });
+
+                var typeTransaction = elementNameWithoutRegex + "%Създаден " + DateTime.Now.ToString();
+
+                FileProcessing.SaveTransaction(typeTransaction);
 
                 //Button newBoton = new Button();
                 //newBoton.Name = nameElement;

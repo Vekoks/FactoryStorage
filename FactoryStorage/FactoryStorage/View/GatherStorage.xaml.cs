@@ -1,4 +1,5 @@
 ﻿using FactoryStorage.Models.Context;
+using FactoryStorage.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,6 +66,10 @@ namespace FactoryStorage.View
                 {
                     item.Number += int.Parse(textBoxNumber.Text);
 
+                    var typeTransaction = NameElementText + "%Добавяне на " + number + "бр " + DateTime.Now.ToString();
+
+                    FileProcessing.SaveTransaction(typeTransaction);
+
                     break;
                 }
             }
@@ -105,6 +110,10 @@ namespace FactoryStorage.View
                 if (string.Equals(item.Name, NameElementText))
                 {
                     item.Number -= int.Parse(textBoxNumber.Text);
+
+                    var typeTransaction = NameElementText + "%Вземане на " + number + "бр " + DateTime.Now.ToString();
+
+                    FileProcessing.SaveTransaction(typeTransaction);
 
                     break;
                 }
