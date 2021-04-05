@@ -122,7 +122,7 @@ namespace FactoryStorage.View
                     CriticalNumber = int.Parse(criticalNumberElement),
                 });
 
-                var typeTransaction = elementNameWithoutRegex + "%Създаден " + DateTime.Now.ToString();
+                var typeTransaction = elementNameWithoutRegex + "%Добавяне на " + numberElement + "бр " + DateTime.Now.ToString();
 
                 FileProcessing.SaveTransaction(typeTransaction);
 

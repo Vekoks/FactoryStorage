@@ -232,5 +232,46 @@ namespace FactoryStorage.Resources
                 var error = e.Message;
             }
         }
+
+        public static void SaveTransaction(List<string> list, string nameFile)
+        {
+            string filePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
+
+            var filePathSplit = filePath.Split('\\');
+
+            var myFilePath = "";
+
+            for (int i = 0; i < filePathSplit.Length - 2; i++)
+            {
+                myFilePath += filePathSplit[i] + "\\";
+            }
+
+            myFilePath += "Resources\\" + nameFile + ".txt";
+
+            if (!(File.Exists(myFilePath)))
+            {
+                using (FileStream fs = File.Create(myFilePath))
+                {
+                    fs.Close();
+                }
+            }
+
+            try
+            {
+                StreamWriter sw = new StreamWriter(myFilePath);
+
+                foreach (var item in list)
+                {
+                    sw.WriteLine(item);
+                }
+
+                sw.Close();
+            }
+            catch (Exception e)
+            {
+                var error = e.Message;
+            }
+        }
+
     }
 }

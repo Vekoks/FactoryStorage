@@ -90,11 +90,13 @@ namespace FactoryStorage.Service
 
         public static List<string> GetTransaction(string nameElement)
         {
-            var listElement = DataRepositorycs.GetInfomationFromFile("Transaction");
+            var listElementFromFile = DataRepositorycs.GetInfomationFromFile("Transaction");
 
             var listFindElement = new List<string>();
 
-            foreach (var element in listElement)
+            var listForRefreshTranzation = new List<string>();
+
+            foreach (var element in listElementFromFile)
             {
                 var elementFromFile = element.Split('%');
 
@@ -105,6 +107,10 @@ namespace FactoryStorage.Service
                 if (string.Equals(elementNameFromFile, nameElement))
                 {
                     listFindElement.Add(elementInformation);
+                }
+                else
+                {
+                    listForRefreshTranzation.Add(element);
                 }
             }
 
@@ -117,6 +123,13 @@ namespace FactoryStorage.Service
                     listFindElement.RemoveAt(i);
                 }
             }
+
+            foreach (var element in listFindElement)
+            {
+                listForRefreshTranzation.Add(nameElement+ "%" + element);
+            }
+
+            DataRepositorycs.SaveTransaction(listForRefreshTranzation, "Transaction");
 
             return listFindElement;
         }
