@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Критични стойности" Height="500" Width="600"
         WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="/Resources/Picture/FactoryStorageImage.jpg"></ImageBrush>
+    </Window.Background>
     <Grid>
         <Label x:Name="labelheading" Content="Критични стойности" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="textBoxMinNumber" HorizontalAlignment="Left" Margin="312,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" Height="24"/>

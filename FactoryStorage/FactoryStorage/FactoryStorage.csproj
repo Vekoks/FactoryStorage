@@ -167,5 +167,8 @@
   <ItemGroup>
     <Resource Include="Resources\Transaction.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Picture\FactoryStorageImage.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

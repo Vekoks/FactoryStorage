@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/transaction.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/picture/schemebackground.jpg")]
 
 

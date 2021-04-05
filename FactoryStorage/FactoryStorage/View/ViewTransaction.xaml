@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Транзакции" Height="415.702" Width="500"
         WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="/Resources/Picture/FactoryStorageImage.jpg"></ImageBrush>
+    </Window.Background>
     <Grid>
         <Label x:Name="labelHeading" Content="Транзакции" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" FontSize="24"/>
         <ListBox x:Name="listBoxItem" Margin="42,87,0,91" HorizontalAlignment="Left" Width="403"/>

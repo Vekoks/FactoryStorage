@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Променяне на наличноста" Height="290" Width="410"
         WindowStartupLocation="CenterScreen">
+    
     <Grid>
 
         <Label x:Name="labelHeading" Content="Промяна" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" FontSize="18"/>
