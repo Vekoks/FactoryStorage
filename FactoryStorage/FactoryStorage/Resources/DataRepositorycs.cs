@@ -24,6 +24,14 @@ namespace FactoryStorage.Resources
 
             myFilePath += "Resources\\" + nameFile + ".txt";
 
+            if (!(File.Exists(myFilePath)))
+            {
+                using (FileStream fs = File.Create(myFilePath))
+                {
+                    fs.Close();
+                }
+            }
+
             return File.ReadAllLines(myFilePath);
 
         }
@@ -42,6 +50,14 @@ namespace FactoryStorage.Resources
             }
 
             myFilePath += "Resources\\" + nameFile + ".txt";
+
+            if (!(File.Exists(myFilePath)))
+            {
+                using (FileStream fs = File.Create(myFilePath))
+                {
+                    fs.Close();
+                }
+            }
 
             try
             {

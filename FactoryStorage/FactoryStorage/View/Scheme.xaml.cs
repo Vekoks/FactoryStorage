@@ -71,9 +71,9 @@ namespace FactoryStorage.View
 
                         var existElement = label.Content.ToString().Split(':')[0].TrimEnd(' ');
 
-                        if (string.Equals(item.Name, existElement))
+                        if (string.Equals(elementNameWithoutRegex, existElement))
                         {
-                             MessageBox.Show("Вече съществува такъв елемент");
+                             MessageBox.Show("Вече съществува този елемент");
 
                              return;
                         }

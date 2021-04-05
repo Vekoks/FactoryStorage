@@ -135,9 +135,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Resources.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Schemes\Телфон с камера.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Resources.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
