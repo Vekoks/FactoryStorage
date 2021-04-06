@@ -189,50 +189,6 @@ namespace FactoryStorage.Resources
             pdf.Save(pathFile);
         }
 
-        public static void SaveTransaction(string nameFile, string currentTransation)
-        {
-            string filePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
-
-            var filePathSplit = filePath.Split('\\');
-
-            var myFilePath = "";
-
-            for (int i = 0; i < filePathSplit.Length - 2; i++)
-            {
-                myFilePath += filePathSplit[i] + "\\";
-            }
-
-            myFilePath += "Resources\\" + nameFile + ".txt";
-
-            if (!(File.Exists(myFilePath)))
-            {
-                using (FileStream fs = File.Create(myFilePath))
-                {
-                    fs.Close();
-                }
-            }
-
-            var listTransaction = File.ReadAllLines(myFilePath).ToList();
-
-            listTransaction.Add(currentTransation);
-
-            try
-            {
-                StreamWriter sw = new StreamWriter(myFilePath);
-
-                foreach (var item in listTransaction)
-                {
-                    sw.WriteLine(item);
-                }
-
-                sw.Close();
-            }
-            catch (Exception e)
-            {
-                var error = e.Message;
-            }
-        }
-
         public static void SaveTransactions(List<string> list, string nameFile)
         {
             string filePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
