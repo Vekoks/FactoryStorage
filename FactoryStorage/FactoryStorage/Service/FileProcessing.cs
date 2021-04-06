@@ -85,7 +85,11 @@ namespace FactoryStorage.Service
 
         public static void SaveTransaction(string currentTransation)
         {
-            DataRepositorycs.SaveTransaction("Transaction", currentTransation);
+            var listElementFromFile = DataRepositorycs.GetInfomationFromFile("Transaction").ToList();
+            
+            listElementFromFile.Add(currentTransation);
+            
+            DataRepositorycs.SaveTransactions(listElementFromFile, "Transaction");
         }
 
         public static List<string> GetTransaction(string nameElement)
