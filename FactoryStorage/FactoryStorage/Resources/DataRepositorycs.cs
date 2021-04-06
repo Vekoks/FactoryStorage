@@ -233,7 +233,7 @@ namespace FactoryStorage.Resources
             }
         }
 
-        public static void SaveTransaction(List<string> list, string nameFile)
+        public static void SaveTransactions(List<string> list, string nameFile)
         {
             string filePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
 
