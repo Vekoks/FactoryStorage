@@ -212,7 +212,7 @@ namespace FactoryStorage.Resources
                 }
             }
 
-            var listTransaction = File.ReadAllLines(myFilePath).ToList(); ;
+            var listTransaction = File.ReadAllLines(myFilePath).ToList();
 
             listTransaction.Add(currentTransation);
 
