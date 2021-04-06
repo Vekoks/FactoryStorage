@@ -129,7 +129,7 @@ namespace FactoryStorage.Service
                 listForRefreshTranzation.Add(nameElement+ "%" + element);
             }
 
-            DataRepositorycs.SaveTransaction(listForRefreshTranzation, "Transaction");
+            DataRepositorycs.SaveTransactions(listForRefreshTranzation, "Transaction");
 
             return listFindElement;
         }
