@@ -12,7 +12,7 @@ namespace FactoryStorage.Service
     {
         public static List<IModels> GetResources()
         {
-            var informationFromFile = DataRepositorycs.GetInfomationFromFile("Resources");
+            var informationFromFile = DataRepository.GetInfomationFromFile("Resources");
 
             var listOrders = new List<IModels>();
 
@@ -35,24 +35,24 @@ namespace FactoryStorage.Service
 
         public static void SaveInfomationInFile(List<IModels> list, string fileName)
         {
-            DataRepositorycs.SaveInfomation(list, fileName);
+            DataRepository.SaveInfomation(list, fileName);
         }
 
         public static void SaveSchemeInFile(ISchemeModel scheme)
         {
-            DataRepositorycs.SaveScheme(scheme);
+            DataRepository.SaveScheme(scheme);
         }
 
         public static List<string> LoadSchemeNames()
         {
-            return DataRepositorycs.GetAllScheme();
+            return DataRepository.GetAllScheme();
         }
 
         public static SchemeModel LoadScheme(string nameScheme)
         {
             var fullNameScheme = "Schemes\\" + nameScheme;
 
-            var listInfomation = DataRepositorycs.GetInfomationFromFile(fullNameScheme);
+            var listInfomation = DataRepository.GetInfomationFromFile(fullNameScheme);
 
             var newScheme = new SchemeModel();
 
@@ -80,21 +80,21 @@ namespace FactoryStorage.Service
 
         public static void SavePdfFile(string PathFile, string Topic, List<string> InformationContext)
         {
-            DataRepositorycs.SaveInfoToPdfFile(PathFile, Topic, InformationContext);
+            DataRepository.SaveInfoToPdfFile(PathFile, Topic, InformationContext);
         }
 
         public static void SaveTransaction(string currentTransation)
         {
-            var listElementFromFile = DataRepositorycs.GetInfomationFromFile("Transaction").ToList();
+            var listElementFromFile = DataRepository.GetInfomationFromFile("Transaction").ToList();
             
             listElementFromFile.Add(currentTransation);
             
-            DataRepositorycs.SaveTransactions(listElementFromFile, "Transaction");
+            DataRepository.SaveTransactions(listElementFromFile, "Transaction");
         }
 
         public static List<string> GetTransaction(string nameElement)
         {
-            var listElementFromFile = DataRepositorycs.GetInfomationFromFile("Transaction");
+            var listElementFromFile = DataRepository.GetInfomationFromFile("Transaction");
 
             var listFindElement = new List<string>();
 
@@ -133,7 +133,7 @@ namespace FactoryStorage.Service
                 listForRefreshTranzation.Add(nameElement+ "%" + element);
             }
 
-            DataRepositorycs.SaveTransactions(listForRefreshTranzation, "Transaction");
+            DataRepository.SaveTransactions(listForRefreshTranzation, "Transaction");
 
             return listFindElement;
         }

@@ -1,4 +1,5 @@
-﻿using FactoryStorage.Models.Context;
+﻿using FactoryStorage.Models;
+using FactoryStorage.Models.Context;
 using FactoryStorage.Service;
 using System;
 using System.Collections.Generic;
@@ -66,9 +67,9 @@ namespace FactoryStorage.View
                 {
                     item.Number += int.Parse(textBoxNumber.Text);
 
-                    var typeTransaction = NameElementText + "%Добавяне на " + number + "бр " + DateTime.Now.ToString();
+                    //var typeTransaction = NameElementText + "%Добавяне на " + number + "бр " + DateTime.Now.ToString();
 
-                    FileProcessing.SaveTransaction(typeTransaction);
+                    //FileProcessing.SaveTransaction(typeTransaction);
 
                     break;
                 }
@@ -79,6 +80,14 @@ namespace FactoryStorage.View
             MessageBox.Show("Добавихте успешно");
 
             previous.InicialisationChangeElement();
+
+            var elementStoraga = new StorageModel
+            {
+                Name = NameElementText,
+                Number = number
+            };
+
+            DataProcessing.SaveInfomation(elementStoraga, '+');
         }
 
         private void buttonExtraction_Click(object sender, RoutedEventArgs e)
@@ -111,9 +120,9 @@ namespace FactoryStorage.View
                 {
                     item.Number -= int.Parse(textBoxNumber.Text);
 
-                    var typeTransaction = NameElementText + "%Вземане на " + number + "бр " + DateTime.Now.ToString();
+                    //var typeTransaction = NameElementText + "%Вземане на " + number + "бр " + DateTime.Now.ToString();
 
-                    FileProcessing.SaveTransaction(typeTransaction);
+                    //FileProcessing.SaveTransaction(typeTransaction);
 
                     break;
                 }
@@ -124,6 +133,14 @@ namespace FactoryStorage.View
             MessageBox.Show("Извадихте успешно");
 
             previous.InicialisationChangeElement();
+
+            var elementStoraga = new StorageModel
+            {
+                Name = NameElementText,
+                Number = number
+            };
+
+            DataProcessing.SaveInfomation(elementStoraga, '-');
         }
 
         private void buttonUp_Click(object sender, RoutedEventArgs e)
@@ -185,6 +202,14 @@ namespace FactoryStorage.View
             MessageBox.Show("Изтрихте успешно");
 
             previous.InicialisationDeleteElement();
+
+            var elementStoraga = new StorageModel
+            {
+                Name = NameElementText,
+                Number = Number
+            };
+
+            DataProcessing.SaveInfomation(elementStoraga, '-');
         }
     }
 }

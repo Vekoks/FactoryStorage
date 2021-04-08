@@ -61,7 +61,7 @@ namespace FactoryStorage.View
 
             textBoxCriticalNumber.Text = "0";
 
-            var flagIsExsist = false;
+            //var flagIsExsist = false;
 
             foreach (var element in listBoxWithElement.Items)
             {
@@ -80,69 +80,88 @@ namespace FactoryStorage.View
                 }
             }
 
-            foreach (var item in listLoadResources)
+            //foreach (var item in listLoadResources)
+            //{
+            //    if (string.Equals(item.Name, elementNameWithoutRegex))
+            //    {
+            //        item.Number += int.Parse(numberElement);
+
+            //        var typeTransaction = elementNameWithoutRegex + "%Добавяне на " + numberElement +"бр " + DateTime.Now.ToString();
+
+            //        FileProcessing.SaveTransaction(typeTransaction);
+
+            //        flagIsExsist = true;
+
+            //        //Button newBoton = new Button();
+            //        //newBoton.Name = nameElement;
+            //        //newBoton.Content = "Промени";
+            //        //newBoton.Click += button_ChangeNumber;
+
+            //        var newBoton = TakeNewButton(nameElement);
+
+            //        //Label newLable = new Label();
+            //        //newLable.Name = "lable" + nameElement;
+            //        //newLable.Content = resoultTextForLable;
+
+            //        var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
+
+            //        listBoxWithElement.Items.Add(newLable);
+
+            //        listBoxWithElement.Items.Add(newBoton);
+
+            //        break;
+            //    }
+            //}
+
+            //if (!flagIsExsist)
+            //{
+            //    listLoadResources.Add(new StorageModel
+            //    {
+            //        Name = elementNameWithoutRegex,
+            //        Number = int.Parse(numberElement),
+            //        CriticalNumber = int.Parse(criticalNumberElement),
+            //    });
+
+            //    var typeTransaction = elementNameWithoutRegex + "%Добавяне на " + numberElement + "бр " + DateTime.Now.ToString();
+
+            //    FileProcessing.SaveTransaction(typeTransaction);
+
+            //    //Button newBoton = new Button();
+            //    //newBoton.Name = nameElement;
+            //    //newBoton.Content = "Промени";
+            //    //newBoton.Click += button_ChangeNumber;
+
+            //    var newBoton = TakeNewButton(nameElement);
+
+            //    //Label newLable = new Label();
+            //    //newLable.Name = "lable" + nameElement;
+            //    //newLable.Content = resoultTextForLable;
+
+            //    var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
+
+            //    listBoxWithElement.Items.Add(newLable);
+
+            //    listBoxWithElement.Items.Add(newBoton);
+            //}
+
+
+            var newBoton = TakeNewButton(nameElement);
+
+            var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
+
+            listBoxWithElement.Items.Add(newLable);
+
+            listBoxWithElement.Items.Add(newBoton);
+
+
+            var elementStoraga = new StorageModel
             {
-                if (string.Equals(item.Name, elementNameWithoutRegex))
-                {
-                    item.Number += int.Parse(numberElement);
+                Name = elementNameWithoutRegex,
+                Number = int.Parse(numberElement),
+                CriticalNumber = int.Parse(criticalNumberElement),
+            };
 
-                    var typeTransaction = elementNameWithoutRegex + "%Добавяне на " + numberElement +"бр " + DateTime.Now.ToString();
-
-                    FileProcessing.SaveTransaction(typeTransaction);
-
-                    flagIsExsist = true;
-
-                    //Button newBoton = new Button();
-                    //newBoton.Name = nameElement;
-                    //newBoton.Content = "Промени";
-                    //newBoton.Click += button_ChangeNumber;
-
-                    var newBoton = TakeNewButton(nameElement);
-
-                    //Label newLable = new Label();
-                    //newLable.Name = "lable" + nameElement;
-                    //newLable.Content = resoultTextForLable;
-
-                    var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
-
-                    listBoxWithElement.Items.Add(newLable);
-
-                    listBoxWithElement.Items.Add(newBoton);
-
-                    break;
-                }
-            }
-
-            if (!flagIsExsist)
-            {
-                listLoadResources.Add(new StorageModel
-                {
-                    Name = elementNameWithoutRegex,
-                    Number = int.Parse(numberElement),
-                    CriticalNumber = int.Parse(criticalNumberElement),
-                });
-
-                var typeTransaction = elementNameWithoutRegex + "%Добавяне на " + numberElement + "бр " + DateTime.Now.ToString();
-
-                FileProcessing.SaveTransaction(typeTransaction);
-
-                //Button newBoton = new Button();
-                //newBoton.Name = nameElement;
-                //newBoton.Content = "Промени";
-                //newBoton.Click += button_ChangeNumber;
-
-                var newBoton = TakeNewButton(nameElement);
-
-                //Label newLable = new Label();
-                //newLable.Name = "lable" + nameElement;
-                //newLable.Content = resoultTextForLable;
-
-                var newLable = TakeNewLable("lable" + nameElement, resoultTextForLable);
-
-                listBoxWithElement.Items.Add(newLable);
-
-                listBoxWithElement.Items.Add(newBoton);
-            }
+            DataProcessing.SaveInfomation(elementStoraga, '+');
 
             this.SaveScheme();
         }
@@ -151,7 +170,9 @@ namespace FactoryStorage.View
         {
             if (!String.IsNullOrEmpty(NameOFLoadScheme))
             {
-                var loadScheme = FileProcessing.LoadScheme(NameOFLoadScheme);
+                //var loadScheme = FileProcessing.LoadScheme(NameOFLoadScheme);
+
+                var loadScheme = DataProcessing.LoadScheme(NameOFLoadScheme); 
 
                 textBoxTopic.Text = loadScheme.Topic;
 
@@ -471,9 +492,11 @@ namespace FactoryStorage.View
                 }
             }
 
-            FileProcessing.SaveSchemeInFile(newSchema);
+            DataProcessing.SaveScheme(newSchema);
 
-            FileProcessing.SaveInfomationInFile(listLoadResources, "Resources");
+            //FileProcessing.SaveSchemeInFile(newSchema);
+
+            //FileProcessing.SaveInfomationInFile(listLoadResources, "Resources");
 
             return true;
         }

@@ -39,7 +39,10 @@ namespace FactoryStorage.View
 
         public void InitializeListBox()
         {
-            listStorageModel = FileProcessing.GetResources();
+            listStorageModel = DataProcessing.GetResources();
+
+            //listStorageModel = FileProcessing.GetResources();
+
 
             listBoxItem.Items.Clear();
 
@@ -109,7 +112,9 @@ namespace FactoryStorage.View
                 nameSelectedElement = context.Split(':')[0].TrimEnd(' ');
             }
 
-            var list = FileProcessing.GetTransaction(nameSelectedElement);
+            //var list = FileProcessing.GetTransaction(nameSelectedElement);
+
+            var list = DataProcessing.GetTransaction(nameSelectedElement);
 
             ViewTransaction view = new ViewTransaction(list);
 

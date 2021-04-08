@@ -6,7 +6,6 @@ D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\PdfSharp
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\PdfSharp.Charting.xml
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\de\PdfSharp.resources.dll
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\de\PdfSharp.Charting.resources.dll
-D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\FactoryStorage.csprojAssemblyReference.cache
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\View\CriticalNumber.g.cs
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\View\GatherStorage.g.cs
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\View\LoadScheme.g.cs
@@ -31,3 +30,9 @@ D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\FactoryS
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\FactoryStorage.csproj.CopyComplete
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\FactoryStorage.exe
 D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\FactoryStorage.pdb
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\FactoryStorage.exe.config
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\EntityFramework.dll
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\EntityFramework.xml
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\bin\Debug\EntityFramework.SqlServer.xml
+D:\GitHub\FactoryStorageProject\FactoryStorage\FactoryStorage\obj\Debug\FactoryStorage.csprojAssemblyReference.cache

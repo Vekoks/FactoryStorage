@@ -32,7 +32,10 @@ namespace FactoryStorage.View
 
         public void InitializeCollectionScheme()
         {
-            var listScheme = FileProcessing.LoadSchemeNames();
+            //var listScheme = FileProcessing.LoadSchemeNames();
+
+            var listScheme = DataProcessing.LoadSchemeNames();
+
 
             foreach (var scheme in listScheme)
             {

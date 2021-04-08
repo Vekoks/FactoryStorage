@@ -1,6 +1,9 @@
-﻿using FactoryStorage.View;
+﻿using FactoryStorage.Data.Data;
+using FactoryStorage.Migrations;
+using FactoryStorage.View;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -22,6 +25,9 @@ namespace FactoryStorage
     {
         public MainWindow()
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataFactoryStorageContext, Configuration>());
+            DataFactoryStorageContext.Create().Database.Initialize(true);
+
             InitializeComponent();
         }
 

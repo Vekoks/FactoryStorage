@@ -49,15 +49,17 @@ namespace FactoryStorage.View
 
             //var listText = selectElement.Content.ToString().Split(' ');
 
-            foreach (var elementStorage in listStorageModel)
-            {
-                if (string.Equals(elementStorage.Name, nameFromSelectElement))
-                {
-                    elementStorage.CriticalNumber = int.Parse(minNumber);
-                }
-            }
+            //foreach (var elementStorage in listStorageModel)
+            //{
+            //    if (string.Equals(elementStorage.Name, nameFromSelectElement))
+            //    {
+            //        elementStorage.CriticalNumber = int.Parse(minNumber);
+            //    }
+            //}
 
-            FileProcessing.SaveInfomationInFile(listStorageModel, "Resources");
+            //FileProcessing.SaveInfomationInFile(listStorageModel, "Resources");
+
+            DataProcessing.ChangeCriticalNumber(nameFromSelectElement, int.Parse(minNumber));
 
             this.InitializeElement();
         }
@@ -69,7 +71,9 @@ namespace FactoryStorage.View
 
         public void InitializeElement()
         {
-            listStorageModel = FileProcessing.GetResources();
+            listStorageModel = DataProcessing.GetResources();
+
+            //listStorageModel = FileProcessing.GetResources();
 
             listBoxCriticalElement.Items.Clear();
 
