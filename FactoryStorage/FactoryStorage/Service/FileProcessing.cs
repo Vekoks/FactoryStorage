@@ -38,6 +38,43 @@ namespace FactoryStorage.Service
             DataRepository.SaveInfomation(list, fileName);
         }
 
+        public static void SaveInfomationInFile(StorageModel element,char sign, string fileName)
+        {
+            var collectionStorageDataModels = this.GetResources();
+
+            var find = false;
+
+            foreach (var current in collectionStorageDataModels)
+            {
+                if (string.Equals(current.Name, element.Name))
+                {
+                    if (char.Equals(sign, '+'))
+                    {
+                        current.Number += element.Number;
+
+                        this.SaveTransaction("Добавяне на " + element.Number + "бр " + DateTime.Now);
+                    }
+                    else
+                    {
+                        current.Number -= element.Number;
+
+                        this.SaveTransaction("Вземане на " + element.Number + "бр "+ DateTime.Now);
+                    }
+
+                    find = true;
+                }
+            }
+
+            if (!find)
+            {
+                this.SaveTransaction("Добавяне на " + element.Number + "бр " + DateTime.Now);
+
+                collectionStorageDataModels.Add(element);
+            }
+
+           DataRepository.SaveInfomation(collectionStorageDataModels, fileName);
+        }
+
         public static void SaveSchemeInFile(ISchemeModel scheme)
         {
             DataRepository.SaveScheme(scheme);
