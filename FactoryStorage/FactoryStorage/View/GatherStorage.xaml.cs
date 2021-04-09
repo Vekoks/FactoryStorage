@@ -61,19 +61,19 @@ namespace FactoryStorage.View
 
             previous.TextChangeElement = NameElementText + " : " + Number + " бр.";
 
-            foreach (var item in listLoadResources)
-            {
-                if (string.Equals(item.Name, NameElementText))
-                {
-                    item.Number += int.Parse(textBoxNumber.Text);
-
-                    //var typeTransaction = NameElementText + "%Добавяне на " + number + "бр " + DateTime.Now.ToString();
-
-                    //FileProcessing.SaveTransaction(typeTransaction);
-
-                    break;
-                }
-            }
+            //foreach (var item in listLoadResources)
+            //{
+            //    if (string.Equals(item.Name, NameElementText))
+            //    {
+            //        item.Number += int.Parse(textBoxNumber.Text);
+            //
+            //       //var typeTransaction = NameElementText + "%Добавяне на " + number + "бр " + DateTime.Now.ToString();
+            //
+            //       //FileProcessing.SaveTransaction(typeTransaction);
+            //
+            //        break;
+            //    }
+            //}
 
             textBoxNumber.Text = "0";
 
@@ -86,6 +86,8 @@ namespace FactoryStorage.View
                 Name = NameElementText,
                 Number = number
             };
+
+            //FileProcessing.SaveInfomationInFile(elementStoraga, '+', "Resources");
 
             DataProcessing.SaveInfomation(elementStoraga, '+');
         }
@@ -114,19 +116,19 @@ namespace FactoryStorage.View
 
             previous.TextChangeElement = NameElementText + " : " + Number + " бр.";
 
-            foreach (var item in listLoadResources)
-            {
-                if (string.Equals(item.Name, NameElementText))
-                {
-                    item.Number -= int.Parse(textBoxNumber.Text);
-
-                    //var typeTransaction = NameElementText + "%Вземане на " + number + "бр " + DateTime.Now.ToString();
-
-                    //FileProcessing.SaveTransaction(typeTransaction);
-
-                    break;
-                }
-            }
+           //foreach (var item in listLoadResources)
+           //{
+           //     if (string.Equals(item.Name, NameElementText))
+           //   {
+           //        item.Number -= int.Parse(textBoxNumber.Text);
+           // 
+           //        //var typeTransaction = NameElementText + "%Вземане на " + number + "бр " + DateTime.Now.ToString();
+           //
+           //        //FileProcessing.SaveTransaction(typeTransaction);
+           //
+           //        break;
+           //     }
+           // }
 
             textBoxNumber.Text = "0";
 
@@ -139,6 +141,8 @@ namespace FactoryStorage.View
                 Name = NameElementText,
                 Number = number
             };
+
+            //FileProcessing.SaveInfomationInFile(elementStoraga, '-', "Resources");
 
             DataProcessing.SaveInfomation(elementStoraga, '-');
         }
@@ -208,6 +212,8 @@ namespace FactoryStorage.View
                 Name = NameElementText,
                 Number = Number
             };
+
+            //FileProcessing.SaveInfomationInFile(elementStoraga, '-', "Resources");
 
             DataProcessing.SaveInfomation(elementStoraga, '-');
         }
