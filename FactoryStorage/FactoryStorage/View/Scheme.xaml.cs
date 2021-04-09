@@ -161,6 +161,8 @@ namespace FactoryStorage.View
                 CriticalNumber = int.Parse(criticalNumberElement),
             };
 
+            FileProcessing.SaveInfomationInFile(elementStoraga, '+', "Resources");
+
             DataProcessing.SaveInfomation(elementStoraga, '+');
 
             this.SaveScheme();
@@ -495,8 +497,6 @@ namespace FactoryStorage.View
             DataProcessing.SaveScheme(newSchema);
 
             //FileProcessing.SaveSchemeInFile(newSchema);
-
-            //FileProcessing.SaveInfomationInFile(listLoadResources, "Resources");
 
             return true;
         }
